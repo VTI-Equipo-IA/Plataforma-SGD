@@ -27,6 +27,19 @@ def create_app():
     from blueprints.manual import bp as manual_bp
     app.register_blueprint(manual_bp)
 
+    # Compatibilidad: rutas antiguas que apuntaban al manual
+    from flask import redirect, url_for
+
+    @app.get("/manual")
+    @app.get("/manual/")
+    def manual_legacy_redirect():
+        return redirect(url_for("manual.index"), code=301)
+
+    @app.get("/editor-planes/manual")
+    @app.get("/editor-planes/manual/")
+    def manual_legacy_editor_planes_redirect():
+        return redirect(url_for("manual.index"), code=301)
+
     # (Opcional) Configuración de IA si la expones
     try:
         from blueprints.config_bp import bp as config_bp
@@ -37,7 +50,6 @@ def create_app():
     @app.route("/")
     def index():
         # Redirige a la página principal de planes
-        from flask import redirect, url_for
         return redirect(url_for("planes.index"))
     
     @app.route("/health")
