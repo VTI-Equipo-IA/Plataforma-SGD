@@ -1,0 +1,154 @@
+/* static/css/manual.css
+   Estilos específicos para la vista Manual de Usuario.
+   Mantiene la paleta y tokens ya presentes en la app.
+*/
+
+.manual-shell{
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1000px){
+  .manual-shell{
+    grid-template-columns: 1fr;
+  }
+}
+
+.manual-sidebar{
+  position: sticky;
+  top: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px;
+}
+
+.manual-sidebar h2{
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.manual-toc{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: calc(100vh - 220px);
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.manual-toc a{
+  text-decoration: none;
+  color: #374151;
+  font-size: 13px;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+.manual-toc a:hover{
+  background: #f3f4f6;
+}
+
+.manual-toc a.active{
+  background: #f3f4f6;
+  font-weight: 700;
+  color: #111827;
+}
+
+.manual-toc a.level-2{ padding-left: 8px; }
+.manual-toc a.level-3{ padding-left: 18px; }
+.manual-toc a.level-4{ padding-left: 28px; }
+
+.manual-main{
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+}
+
+.manual-topbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.manual-title{
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.manual-content{
+  max-width: 1000px;
+}
+
+.manual-content h2{
+  margin: 22px 0 10px;
+  font-size: 18px;
+}
+
+.manual-content h3{
+  margin: 18px 0 8px;
+  font-size: 15px;
+}
+
+.manual-content p,
+.manual-content li{
+  color: #374151;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.manual-content code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12.5px;
+}
+
+.manual-content pre{
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8fafc;
+  overflow: auto;
+}
+
+.manual-content table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.manual-content th,
+.manual-content td{
+  border-top: 1px solid #e5e7eb;
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.manual-content thead th{
+  background: #f3f4f6;
+  position: sticky;
+  top: 0;
+}
+
+.manual-callout{
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid var(--primary-600);
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.manual-callout strong{ color: #111827; }

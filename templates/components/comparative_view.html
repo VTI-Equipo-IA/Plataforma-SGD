@@ -1,0 +1,82 @@
+<!-- templates/components/comparative_view.html -->
+<div class="comparative-container">
+  <div class="comparative-table-wrapper">
+    <div class="comparative-table-header">
+      <h3>Agente Maestro</h3>
+    </div>
+    <div class="table-wrapper comparative-scroll">
+      <table class="data-table comparative-table">
+        <thead>
+          <tr>
+            <th style="min-width:120px;">Tipo</th>
+            <th style="min-width:400px;">Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if rows_agente %}
+            {% for row in rows_agente %}
+              <tr>
+                <td>{{ row.get('tipo') or row.get('Tipo', '') }}</td>
+                <td>
+                  <div class="cell-content clamp-4">
+                    {{ row.get('descripcion') or row.get('Descripcion', '') }}
+                  </div>
+                  {% set desc = row.get('descripcion') or row.get('Descripcion', '') %}
+                  {% if desc|length > 200 %}
+                    <button type="button" class="toggle-more">Ver más</button>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="2" style="text-align:center; color:#6b7280; padding:20px;">
+                No hay actividades del Agente Maestro en este plan
+              </td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="comparative-table-wrapper">
+    <div class="comparative-table-header">
+      <h3>Comité</h3>
+    </div>
+    <div class="table-wrapper comparative-scroll">
+      <table class="data-table comparative-table">
+        <thead>
+          <tr>
+            <th style="min-width:120px;">Tipo</th>
+            <th style="min-width:400px;">Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if rows_comite %}
+            {% for row in rows_comite %}
+              <tr>
+                <td>{{ row.get('tipo') or row.get('Tipo', '') }}</td>
+                <td>
+                  <div class="cell-content clamp-4">
+                    {{ row.get('descripcion') or row.get('Descripcion', '') }}
+                  </div>
+                  {% set desc = row.get('descripcion') or row.get('Descripcion', '') %}
+                  {% if desc|length > 200 %}
+                    <button type="button" class="toggle-more">Ver más</button>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="2" style="text-align:center; color:#6b7280; padding:20px;">
+                No hay actividades del Comité en este plan
+              </td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

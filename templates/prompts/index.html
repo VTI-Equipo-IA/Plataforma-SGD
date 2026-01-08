@@ -1,0 +1,875 @@
+{% extends "layout.html" %}
+
+{% block title %}Gestión de Prompts - Agente Maestro{% endblock %}
+
+{% block extra_css %}
+<style>
+    .prompts-container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 30px;
+        background: #f5f7fa;
+        min-height: calc(100vh - 60px);
+    }
+
+    .prompts-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .prompts-header h2 {
+        margin: 0;
+        color: #1e3a8a;
+        font-size: 28px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .editor-section {
+        background: white;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .editor-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e5e7eb;
+    }
+
+    .editor-header h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #374151;
+        font-weight: 600;
+    }
+
+    .version-info {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .version-badge {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 16px;
+        font-weight: 600;
+        font-size: 13px;
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+    }
+
+    #promptEditor {
+        width: 100%;
+        min-height: 450px;
+        padding: 18px;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        border: 2px solid #d1d5db;
+        border-radius: 6px;
+        resize: vertical;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        background: #fafafa;
+    }
+
+    #promptEditor:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        background: white;
+    }
+
+    .editor-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 2px solid #e5e7eb;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .editor-meta {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .editor-meta input {
+        padding: 10px 14px;
+        border: 2px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .editor-meta input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .editor-meta input::placeholder {
+        color: #9ca3af;
+    }
+
+    .editor-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 11px 24px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    }
+
+    .btn-secondary {
+        background: #6b7280;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: #4b5563;
+    }
+
+    .btn-success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+    }
+
+    .btn-success:hover {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+
+    .btn-danger {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    }
+
+    .btn-warning {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: white;
+    }
+
+    .btn-warning:hover {
+        background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6);
+        animation: fadeIn 0.2s;
+        backdrop-filter: blur(2px);
+    }
+
+    .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .modal-content {
+        background-color: white;
+        border-radius: 12px;
+        width: 95%;
+        max-width: 1100px;
+        max-height: 85vh;
+        overflow: hidden;
+        animation: slideDown 0.3s;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-header {
+        padding: 24px 30px;
+        border-bottom: 2px solid #e5e7eb;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    }
+
+    .modal-header h2 {
+        margin: 0;
+        font-size: 24px;
+        color: #1f2937;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .modal-close {
+        background: #f3f4f6;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 0;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+        background: #ef4444;
+        color: white;
+        transform: rotate(90deg);
+    }
+
+    .modal-body {
+        padding: 30px;
+        overflow-y: auto;
+        flex: 1;
+    }
+
+    .versions-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .version-item {
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s;
+        background: white;
+    }
+
+    .version-item:hover {
+        border-color: #3b82f6;
+        background-color: #f0f9ff;
+        transform: translateX(4px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+
+    .version-item.active-version {
+        border-color: #10b981;
+        background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+    }
+
+    .version-details {
+        flex-grow: 1;
+    }
+
+    .version-details h3 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        color: #1f2937;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .version-meta {
+        display: flex;
+        gap: 20px;
+        font-size: 13px;
+        color: #6b7280;
+        flex-wrap: wrap;
+    }
+
+    .version-meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .version-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-sm {
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .alert {
+        padding: 16px 24px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        animation: slideDown 0.3s;
+        font-size: 15px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .alert::before {
+        font-size: 20px;
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        border: 2px solid #10b981;
+        color: #065f46;
+    }
+
+    .alert-success::before {
+        content: '✓';
+    }
+
+    .alert-error {
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        border: 2px solid #ef4444;
+        color: #991b1b;
+    }
+
+    .alert-error::before {
+        content: '✕';
+    }
+
+    .alert-warning {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        border: 2px solid #f59e0b;
+        color: #92400e;
+    }
+
+    .alert-warning::before {
+        content: '⚠';
+    }
+
+    .char-count {
+        font-size: 14px;
+        color: #6b7280;
+        font-weight: 600;
+        padding: 8px 14px;
+        background: #f3f4f6;
+        border-radius: 6px;
+    }
+
+    .loading {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        vertical-align: middle;
+        margin-left: 8px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+        from { transform: translateY(-20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .preview-section {
+        background: #fafafa;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+        max-height: 400px;
+        overflow-y: auto;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        font-size: 13px;
+        white-space: pre-wrap;
+        line-height: 1.6;
+        color: #374151;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #9ca3af;
+    }
+
+    .empty-state-icon {
+        font-size: 64px;
+        margin-bottom: 16px;
+        opacity: 0.5;
+    }
+
+    .empty-state p {
+        font-size: 16px;
+        color: #6b7280;
+        margin: 0;
+    }
+
+    .active-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        background: #10b981;
+        color: white;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .active-indicator::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: white;
+        border-radius: 50%;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="prompts-container">
+    <!-- Header -->
+    <div class="prompts-header">
+        <h2>📝 Gestión de Prompts - Agente Maestro</h2>
+        <div class="header-buttons">
+            <button class="btn btn-secondary" onclick="window.location.href='/'">
+                ← Volver a Planes
+            </button>
+            <button class="btn btn-warning" onclick="showVersionsModal()">
+                📚 Ver Versiones
+            </button>
+        </div>
+    </div>
+
+    <!-- Alerts -->
+    <div id="alertContainer"></div>
+
+    <!-- Editor Section -->
+    <div class="editor-section">
+        <div class="editor-header">
+            <h3>Editor de Prompt</h3>
+            <div class="version-info">
+                {% if active_prompt %}
+                <span class="version-badge">{{ active_prompt.version_label or 'Sin versión' }}</span>
+                <span>📅 {{ active_prompt.fecha_actualizacion.strftime('%d/%m/%Y %H:%M') if active_prompt.fecha_actualizacion else 'N/A' }}</span>
+                {% else %}
+                <span class="version-badge">Nueva</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <textarea id="promptEditor" placeholder="Escribe o pega el prompt del Agente Maestro aquí...">{{ active_prompt.prompt if active_prompt else '' }}</textarea>
+
+        <div class="editor-footer">
+            <div class="editor-meta">
+                <input 
+                    type="text" 
+                    id="versionLabel" 
+                    placeholder="Etiqueta de versión (ej: v1.2)" 
+                    style="width: 200px;"
+                >
+                <input 
+                    type="text" 
+                    id="notasInput" 
+                    placeholder="Notas sobre los cambios..." 
+                    style="width: 350px;"
+                >
+                <span class="char-count">
+                    <span id="charCount">0</span> caracteres
+                </span>
+            </div>
+            <div class="editor-actions">
+                <button class="btn btn-success" onclick="savePrompt()">
+                    💾 Guardar Nueva Versión
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Versiones -->
+<div id="versionsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>📚 Historial de Versiones</h2>
+            <button class="modal-close" onclick="closeVersionsModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <ul class="versions-list" id="versionsList">
+                <!-- Se llenará dinámicamente -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Preview -->
+<div id="previewModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>👁️ Vista Previa de Versión</h2>
+            <button class="modal-close" onclick="closePreviewModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div id="previewVersionInfo" style="margin-bottom: 15px;"></div>
+            <div id="previewContent" class="preview-section"></div>
+            <div style="margin-top: 15px; text-align: right;">
+                <button class="btn btn-secondary" onclick="closePreviewModal()">Cerrar</button>
+                <button class="btn btn-danger" id="restoreBtn" onclick="confirmRestore()">
+                    ⏮️ Restaurar Esta Versión
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentVersions = [];
+    let selectedVersionId = null;
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCharCount();
+        document.getElementById('promptEditor').addEventListener('input', updateCharCount);
+        loadVersions();
+    });
+
+    // Actualizar contador de caracteres
+    function updateCharCount() {
+        const text = document.getElementById('promptEditor').value;
+        document.getElementById('charCount').textContent = text.length.toLocaleString();
+    }
+
+    // Guardar prompt
+    async function savePrompt() {
+        const promptText = document.getElementById('promptEditor').value.trim();
+        const versionLabel = document.getElementById('versionLabel').value.trim();
+        const notas = document.getElementById('notasInput').value.trim();
+
+        if (!promptText) {
+            showAlert('El prompt no puede estar vacío', 'error');
+            return;
+        }
+
+        if (promptText.length < 100) {
+            if (!confirm('El prompt es muy corto. ¿Deseas continuar?')) {
+                return;
+            }
+        }
+
+        const btn = event.target;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '💾 Guardando<span class="loading"></span>';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch('/prompts/api/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    prompt: promptText,
+                    version_label: versionLabel,
+                    notas: notas
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                showAlert(data.message, 'success');
+                document.getElementById('versionLabel').value = '';
+                document.getElementById('notasInput').value = '';
+                loadVersions();
+                
+                // Actualizar badge de versión
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            } else {
+                showAlert(data.message || 'Error al guardar', 'error');
+            }
+        } catch (error) {
+            showAlert('Error de conexión: ' + error.message, 'error');
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    }
+
+    // Cargar versiones
+    async function loadVersions() {
+        try {
+            const response = await fetch('/prompts/api/versions');
+            const data = await response.json();
+
+            if (data.success) {
+                currentVersions = data.versions;
+            }
+        } catch (error) {
+            console.error('Error al cargar versiones:', error);
+        }
+    }
+
+    // Mostrar modal de versiones
+    function showVersionsModal() {
+        const modal = document.getElementById('versionsModal');
+        const list = document.getElementById('versionsList');
+
+        if (currentVersions.length === 0) {
+            list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📭</div><p>No hay versiones disponibles</p></div>';
+        } else {
+            list.innerHTML = currentVersions.map((v, idx) => `
+                <li class="version-item ${idx === 0 ? 'active-version' : ''}">
+                    <div class="version-details">
+                        <h3>
+                            ${v.version_label || 'Sin etiqueta'} 
+                            ${idx === 0 ? '<span class="active-indicator">ACTIVA</span>' : ''}
+                        </h3>
+                        <div class="version-meta">
+                            <span>🆔 ID: ${v.id}</span>
+                            <span>📅 ${new Date(v.fecha_creacion).toLocaleString('es-CL', {
+                                day: '2-digit',
+                                month: '2-digit', 
+                                year: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: true
+                            })}</span>
+                            <span>📏 ${v.prompt_length.toLocaleString('es-CL')} caracteres</span>
+                            ${v.notas ? `<span>📝 ${v.notas}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="version-actions">
+                        <button class="btn btn-sm btn-primary" onclick="previewVersion(${v.id})">
+                            👁️ Ver
+                        </button>
+                        ${idx !== 0 ? `
+                            <button class="btn btn-sm btn-warning" onclick="previewAndRestore(${v.id})">
+                                ⏮️ Restaurar
+                            </button>
+                        ` : ''}
+                    </div>
+                </li>
+            `).join('');
+        }
+
+        modal.classList.add('active');
+    }
+
+    // Cerrar modal de versiones
+    function closeVersionsModal() {
+        document.getElementById('versionsModal').classList.remove('active');
+    }
+
+    // Preview de versión
+    async function previewVersion(versionId) {
+        try {
+            const response = await fetch(`/prompts/api/version/${versionId}`);
+            const data = await response.json();
+
+            if (data.success) {
+                showPreviewModal(data.prompt);
+            } else {
+                showAlert('Error al cargar versión: ' + data.message, 'error');
+            }
+        } catch (error) {
+            showAlert('Error de conexión: ' + error.message, 'error');
+        }
+    }
+
+    // Mostrar modal de preview
+    function showPreviewModal(prompt) {
+        selectedVersionId = prompt.id;
+        
+        const modal = document.getElementById('previewModal');
+        const infoDiv = document.getElementById('previewVersionInfo');
+        const contentDiv = document.getElementById('previewContent');
+
+        infoDiv.innerHTML = `
+            <div style="display: flex; gap: 20px; padding: 16px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; border: 2px solid #3b82f6; flex-wrap: wrap;">
+                <strong style="color: #1e40af; font-size: 16px;">Versión: ${prompt.version_label || 'Sin etiqueta'}</strong>
+                <span style="color: #475569;">🆔 ID: ${prompt.id}</span>
+                <span style="color: #475569;">📅 ${new Date(prompt.fecha_creacion).toLocaleString('es-CL', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                })}</span>
+                <span style="color: #475569;">📏 ${prompt.prompt.length.toLocaleString('es-CL')} caracteres</span>
+                ${prompt.notas ? `<span style="color: #475569;">📝 ${prompt.notas}</span>` : ''}
+            </div>
+        `;
+
+        contentDiv.textContent = prompt.prompt;
+
+        modal.classList.add('active');
+        closeVersionsModal();
+    }
+
+    // Preview y restaurar
+    function previewAndRestore(versionId) {
+        previewVersion(versionId);
+    }
+
+    // Cerrar modal de preview
+    function closePreviewModal() {
+        document.getElementById('previewModal').classList.remove('active');
+        selectedVersionId = null;
+    }
+
+    // Confirmar restauración
+    function confirmRestore() {
+        if (!selectedVersionId) return;
+
+        const version = currentVersions.find(v => v.id === selectedVersionId);
+        const versionsToDelete = currentVersions.filter(v => v.id > selectedVersionId).length;
+
+        if (!confirm(
+            `⚠️ ADVERTENCIA: Esta acción eliminará las ${versionsToDelete} versiones posteriores a "${version.version_label || 'ID ' + version.id}".\n\n` +
+            `¿Estás seguro de que deseas restaurar a esta versión?`
+        )) {
+            return;
+        }
+
+        restoreVersion(selectedVersionId);
+    }
+
+    // Restaurar versión
+    async function restoreVersion(versionId) {
+        const btn = document.getElementById('restoreBtn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '⏮️ Restaurando<span class="loading"></span>';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(`/prompts/api/restore/${versionId}`, {
+                method: 'POST'
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                showAlert(`${data.message} (${data.deleted_count} versiones eliminadas)`, 'success');
+                closePreviewModal();
+                
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            } else {
+                showAlert(data.message || 'Error al restaurar', 'error');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        } catch (error) {
+            showAlert('Error de conexión: ' + error.message, 'error');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    }
+
+    // Mostrar alerta
+    function showAlert(message, type = 'success') {
+        const container = document.getElementById('alertContainer');
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type}`;
+        alert.textContent = message;
+        
+        container.appendChild(alert);
+        
+        setTimeout(() => {
+            alert.style.animation = 'fadeIn 0.3s reverse';
+            setTimeout(() => alert.remove(), 300);
+        }, 4000);
+    }
+
+    // Cerrar modales al hacer clic fuera
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.classList.remove('active');
+            selectedVersionId = null;
+        }
+    }
+</script>
+{% endblock %}

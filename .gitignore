@@ -1,0 +1,61 @@
+# --- Entorno virtual ---
+editor/
+.editor/
+.venv/
+venv/
+
+# --- Archivos de entorno y configuración local ---
+.env
+.env.example
+.env.local
+*.env.backup
+
+# --- Archivos Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Archivos de migraciones / Alembic ---
+migrations/__pycache__/
+migrations/*.pyc
+migrations/versions/*.pyc
+migrations/versions/__pycache__/
+
+# --- Archivos de base de datos locales ---
+instance/
+*.db
+*.sqlite3
+
+# --- Archivos temporales o de cache ---
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# --- Archivos de compilación / paquetes ---
+build/
+dist/
+*.egg-info/
+*.egg
+
+# --- Archivos de editor/IDE ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Archivos generados por pruebas ---
+.coverage
+htmlcov/
+pytest_cache/
+.tox/
+.cache/
+
+# --- Archivos de Jupyter / notebooks ---
+.ipynb_checkpoints/
+*.ipynb
+
+# --- Archivos de Excel temporales o importados ---
+~$*.xlsx
+*.xlsb
+*.xlsm

@@ -1,0 +1,41 @@
+services:
+  editor-planes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      # Flask usa PORT para escuchar (app.py). Traefik enruta a ese puerto interno.
+      PORT: "5001"
+
+      # Necesario para SQLAlchemy (config/settings.py no tiene default)
+      # Ejemplo: postgresql+psycopg2://postgres:postgres@postgres:5432/ptd_db
+      SQLALCHEMY_DATABASE_URI: ${SQLALCHEMY_DATABASE_URI}
+
+      # Recomendado (no uses el default "change-me" en entornos reales)
+      SECRET_KEY: ${SECRET_KEY}
+
+      # Opcional (solo si tu app usa cifrado Fernet en algún flujo)
+      FERNET_SECRET: ${FERNET_SECRET}
+
+    labels:
+      - "traefik.enable=true"
+
+      # Router HTTP
+      - "traefik.http.routers.editor-planes.rule=Host(`pmg-transformacion-digital.uchile.cl`)"
+      - "traefik.http.routers.editor-planes.entrypoints=websecure"
+
+      # Si tu Traefik usa TLS por defecto, activa estas 2 líneas y ajusta entrypoints a websecure
+      - "traefik.http.routers.editor-planes.tls=true"
+
+      # Service: Traefik debe apuntar al puerto interno del contenedor (5001)
+      - "traefik.http.services.editor-planes.loadbalancer.server.port=5001"
+
+    networks:
+      - traefik_web
+
+    restart: unless-stopped
+
+networks:
+  traefik_web:
+    external: true
+    name: traefik_web

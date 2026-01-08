@@ -1,0 +1,430 @@
+{
+  "Gobernanza de datos": {
+    "Visión Estratégica": {
+      "all_levels": [
+        "Generar compromiso directivo con la gestión y gobernanza de datos como valor público.",
+        "Incluir explícitamente los temas de datos en los objetivos e iniciativas estratégicas institucionales.",
+        "Asignar presupuesto y recursos mínimos para la hoja de ruta de datos."
+      ],
+      "básico": {
+        "criterios": {
+          "Capacidades": [
+            "Capacitar a personas clave en MGDE y aspectos legales/normativos asociados."
+          ],
+          "Gestión del Cambio": [
+            "Crear plan de gestión del cambio (según guía base o alcance institucional)."
+          ],
+          "Alianzas y Colaboraciones": [
+            "Establecer alianzas iniciales con OAE/privados en torno a datos."
+          ],
+          "Medición y Seguimiento": [
+            "Definir métricas para evaluar el éxito de la estrategia e implantación."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Capacidades": [
+            "Capacitar equipos definidos para la gestión de datos en MGDE y normativa."
+          ],
+          "Gestión del Cambio": [
+            "Adaptar el plan de gestión del cambio a la realidad institucional."
+          ],
+          "Alianzas y Colaboraciones": [
+            "Definir mecanismos para ampliar y sostener alianzas de datos."
+          ],
+          "Medición y Seguimiento": [
+            "Recolectar datos y evaluar periódicamente las métricas definidas."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Capacidades": [
+            "Profundizar en competencias MGDE y dimensiones específicas (calidad, catálogo, interoperabilidad)."
+          ],
+          "Gestión del Cambio": [
+            "Operar el plan de cambio con acciones recurrentes y retroalimentación."
+          ],
+          "Alianzas y Colaboraciones": [
+            "Institucionalizar alianzas y explorar nuevas oportunidades de colaboración."
+          ],
+          "Medición y Seguimiento": [
+            "Revisar y ajustar la estrategia según resultados e indicadores."
+          ]
+        }
+      }
+    },
+
+    "Gobernanza": {
+      "all_levels": [
+        "Definir responsable institucional de datos (punto focal) reconocido por la alta dirección."
+      ],
+      "básico": {
+        "criterios": {
+          "Gobernanza Organizacional": [
+            "Designar responsable de datos con funciones formales y dedicación parcial.",
+            "Establecer reporte periódico a la alta dirección sobre avances en datos."
+          ],
+          "Comités y Coordinación": [
+            "Conformar mesa mínima de coordinación transversal para datos."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Gobernanza Organizacional": [
+            "Formar un equipo pequeño de gobernanza de datos con roles definidos."
+          ],
+          "Comités y Coordinación": [
+            "Operar un comité de datos con calendario y actas, integrando áreas estratégicas."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Gobernanza Organizacional": [
+            "Consolidar equipo de gobierno de datos con dedicación suficiente y atribuciones."
+          ],
+          "Comités y Coordinación": [
+            "Integrar comités de datos con otros comités institucionales (seguridad, TI, proyectos)."
+          ]
+        }
+      }
+    },
+
+    "Arquitectura, Diseño y documentación": {
+      "all_levels": [
+        "Definir principios básicos de arquitectura de información y modelamiento institucional."
+      ],
+      "básico": {
+        "criterios": {
+          "Levantamiento": [
+            "Inventariar fuentes, sistemas y objetos de datos críticos.",
+            "Documentar flujos principales de datos con diagramas simples."
+          ],
+          "Modelos Base": [
+            "Establecer un glosario mínimo y modelos lógicos de datos para procesos clave."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Estandarización": [
+            "Estandarizar convenciones de nombres, dominios y relaciones de datos."
+          ],
+          "Documentación": [
+            "Mantener documentación versionada de modelos y flujos (cambios controlados)."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Arquitectura Empresarial": [
+            "Alinear arquitectura de datos con arquitectura empresarial y portafolio TI."
+          ],
+          "Gobierno de Artefactos": [
+            "Operar un repositorio de artefactos (modelos, diccionarios, contratos) con responsables."
+          ]
+        }
+      }
+    },
+
+    "Almacenamiento y Operación": {
+      "all_levels": [
+        "Asegurar almacenamiento confiable, respaldos y continuidad mínima para datos críticos."
+      ],
+      "básico": {
+        "criterios": {
+          "Buenas Prácticas": [
+            "Implementar políticas básicas de respaldo, retención y recuperación.",
+            "Separar ambientes (desarrollo/pruebas/producción) cuando sea posible."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Operación": [
+            "Monitorear capacidad y desempeño de almacenamiento.",
+            "Automatizar tareas recurrentes (respaldos, verificación de integridad)."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Disponibilidad": [
+            "Implementar alta disponibilidad y planes de continuidad/DRP para datos críticos."
+          ],
+          "Optimización": [
+            "Optimizar costos y desempeño (ciclo de vida, archivado, tiering)."
+          ]
+        }
+      }
+    },
+
+    "Seguridad y Ciberseguridad de Datos": {
+      "all_levels": [
+        "Cumplir normativa de seguridad de la información y protección de datos personales aplicable a la institución."
+      ],
+      "básico": {
+        "criterios": {
+          "Controles Mínimos": [
+            "Aplicar controles de acceso básicos, gestión de credenciales y respaldo seguro."
+          ],
+          "Concientización": [
+            "Realizar sensibilización en protección de datos personales a equipos críticos."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Procedimientos": [
+            "Definir procedimientos de incidentes de seguridad de datos y notificación.",
+            "Clasificar información por sensibilidad y asignar medidas asociadas."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Gestión Integrada": [
+            "Integrar seguridad de datos a la gestión de TI y gobierno institucional (controles y auditorías).",
+            "Realizar pruebas periódicas y simulacros de respuesta a incidentes."
+          ]
+        }
+      }
+    },
+
+    "Integración e Interoperabilidad": {
+      "all_levels": [],
+      "básico": {
+        "criterios": {
+          "Diagnóstico": [
+            "Identificar flujos de intercambio de datos y brechas mínimas con contrapartes."
+          ],
+          "Gobierno": [
+            "Definir reglas básicas de intercambio (frecuencia, formato, responsables)."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Integración": [
+            "Implementar intercambios regulares usando estándares del Estado cuando existan."
+          ],
+          "Acuerdos": [
+            "Formalizar acuerdos de servicio/datos (SLA mínimos) con contrapartes."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Ecosistema": [
+            "Operar integraciones con monitoreo y trazabilidad, escalando a nuevos casos de uso."
+          ]
+        }
+      }
+    },
+
+    "Documentos y Contenidos": {
+      "all_levels": [
+        "Gestionar ciclo de vida de documentos y contenidos (creación, versión, archivo) con responsables."
+      ],
+      "básico": {
+        "criterios": {
+          "Lineamientos": [
+            "Definir pautas de nomenclatura y almacenamiento para documentos oficiales."
+          ],
+          "Acceso": [
+            "Establecer permisos básicos y control de versiones en repositorios comunes."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Estandarización": [
+            "Estandarizar metadatos de documentos y plantillas institucionales."
+          ],
+          "Automatización": [
+            "Automatizar flujos de aprobación y publicación donde sea factible."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Gestión Integral": [
+            "Integrar la gestión documental con procesos y sistemas, con auditoría y trazabilidad."
+          ]
+        }
+      }
+    },
+
+    "Datos Maestros y de Referencia": {
+      "all_levels": [
+        "Identificar dominios de datos maestros/referenciales y responsables."
+      ],
+      "básico": {
+        "criterios": {
+          "Inventario": [
+            "Registrar fuentes y tablas maestras principales con su propietario y custodio."
+          ],
+          "Calidad Base": [
+            "Establecer reglas simples de unicidad y catálogos mínimos de códigos."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Gobierno de Dominios": [
+            "Definir procesos de alta/cambio/baja de valores maestros con control y versionado."
+          ],
+          "Sincronización": [
+            "Implementar mecanismos de sincronización entre sistemas consumidores."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "MDM/Referenciales": [
+            "Operar solución MDM o esquema consolidado de referenciales con trazabilidad."
+          ]
+        }
+      }
+    },
+
+    "Analítica e Inteligencia de Negocios": {
+      "all_levels": [],
+      "básico": {
+        "criterios": {
+          "Primeros Casos": [
+            "Identificar 1–2 casos de uso de analítica de impacto rápido (reportes/tableros)."
+          ],
+          "Capacitación": [
+            "Capacitar en uso de herramientas básicas de BI a usuarios clave."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Plataforma": [
+            "Consolidar fuentes y publicar tableros institucionales con control de acceso."
+          ],
+          "Ciclo de Mejora": [
+            "Establecer ciclo de retroalimentación con usuarios para ajustar reportes/indicadores."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Gobierno de Analítica": [
+            "Gestionar portafolio de analítica alineado a valor público y prioridades institucionales."
+          ],
+          "Analítica Avanzada": [
+            "Explorar modelos predictivos/ML donde sea pertinente y sostenible."
+          ]
+        }
+      }
+    },
+
+    "Calidad de Datos": {
+      "all_levels": [
+        "Acordar dimensiones mínimas de calidad (integridad, completitud, consistencia, actualidad)."
+      ],
+      "básico": {
+        "criterios": {
+          "Validaciones": [
+            "Aplicar validaciones al origen para conjuntos de datos críticos."
+          ],
+          "Corrección": [
+            "Definir procedimientos simples de corrección de errores frecuentes."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Automatización": [
+            "Implementar controles automáticos y reglas de calidad para fuentes clave."
+          ],
+          "Indicadores": [
+            "Monitorear indicadores de calidad y publicar planes de mejora asociados."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Proceso Formal": [
+            "Operar proceso de gestión de la calidad con responsables por dominio."
+          ],
+          "Estandarización": [
+            "Estandarizar reglas de negocio y catálogos para calidad sostenida."
+          ]
+        }
+      }
+    },
+
+    "Datos Abiertos": {
+      "all_levels": [
+        "Cumplir lineamientos de datos abiertos del Estado y buenas prácticas de publicación."
+      ],
+      "básico": {
+        "criterios": {
+          "Identificación": [
+            "Identificar conjuntos publicables y metadatos esenciales."
+          ],
+          "Publicación": [
+            "Publicar datasets iniciales en portal institucional o plataforma centralizada."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Mejora Continua": [
+            "Actualizar datasets y metadatos con periodicidad definida y mecanismos de retroalimentación."
+          ],
+          "Estandarización": [
+            "Utilizar formatos abiertos y vocabularios estandarizados cuando existan."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Ecosistema": [
+            "Articular comunidad usuaria y casos de uso de valor público con datos abiertos."
+          ],
+          "Calidad/Impacto": [
+            "Medir uso/impacto de datasets y priorizar mejoras."
+          ]
+        }
+      }
+    },
+
+    "Aspectos Legales y Normativos": {
+      "all_levels": [
+        "Alinear la gestión de datos a las normativas vigentes (transparencia, protección de datos, seguridad, TD)."
+      ],
+      "básico": {
+        "criterios": {
+          "Cumplimiento Mínimo": [
+            "Identificar obligaciones legales aplicables a datos y definir responsables.",
+            "Asegurar cláusulas básicas de tratamiento de datos en convenios/contratos."
+          ]
+        }
+      },
+      "medio": {
+        "criterios": {
+          "Procedimientos": [
+            "Formalizar procedimientos de ejercicio de derechos, acceso y resguardo de datos.",
+            "Capacitar a responsables en normativas y su aplicación práctica."
+          ]
+        }
+      },
+      "avanzado": {
+        "criterios": {
+          "Gestión Normativa": [
+            "Monitorear cambios normativos y ajustar políticas y procedimientos de datos.",
+            "Realizar revisiones/auditorías periódicas de cumplimiento."
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  {% include "components/tabs.html" %}
+  <div class="card-body">
+    <h2>Editar fila #{{ row.id }}</h2>
+    <form method="post">
+      {{ form.csrf_token }}
+      <div class="form-field">
+        <label>Brecha</label>
+        {{ form.Brecha(rows=4) }}
+      </div>
+      {% if form.Nombre_Actividad_Hito_Diego.name in row %}
+      <div class="form-field">
+        <label>Nombre_Actividad_Hito_Diego</label>
+        {{ form.Nombre_Actividad_Hito_Diego(rows=8) }}
+      </div>
+      {% endif %}
+      {% if form.Nombre_Actividad_Hito_Luis.name in row %}
+      <div class="form-field">
+        <label>Nombre_Actividad_Hito_Luis</label>
+        {{ form.Nombre_Actividad_Hito_Luis(rows=8) }}
+      </div>
+      {% endif %}
+      <button type="submit" class="btn-primary">Guardar</button>
+      <a href="{{ url_for('planes.index', dim=current_dim.slug) }}" class="btn-secondary">Volver</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

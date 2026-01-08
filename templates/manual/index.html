@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Manual de Usuario{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/manual.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="manual-shell">
+    <aside class="manual-sidebar" aria-label="Tabla de contenidos">
+      <h2>Contenido</h2>
+      <nav id="manual-toc" class="manual-toc"></nav>
+    </aside>
+
+    <section class="manual-main">
+      <div class="manual-topbar">
+        <h1 class="manual-title">Manual de Usuario</h1>
+        <a class="btn-small" href="{{ url_for('planes.index') }}">Volver a Planes</a>
+      </div>
+
+      <div class="manual-content">
+        {% include "manual/content.html" %}
+      </div>
+    </section>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{{ url_for('static', filename='js/manual.js') }}"></script>
+{% endblock %}

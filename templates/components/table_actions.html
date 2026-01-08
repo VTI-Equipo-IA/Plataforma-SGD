@@ -1,0 +1,30 @@
+<!-- templates/components/table_actions.html -->
+<div class="row-actions" data-row-id="{{ row.id }}">
+  <!-- Modo lectura -->
+  {% if view_mode == 'plan' %}
+  <button type="button"
+          class="btn-icon btn-insert-below"
+          title="Agregar una fila debajo"
+          data-row-id="{{ row.id }}">+</button>
+  {% endif %}
+
+  <button type="button"
+          class="btn-icon btn-edit"
+          title="Editar esta fila"
+          data-row-id="{{ row.id }}">✏️</button>
+
+  <form method="post"
+        action="{{ url_for('planes.delete', dim=current_dim.slug, row_id=row.id) }}"
+        onsubmit="return confirm('¿Eliminar registro?');"
+        class="inline-delete-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" class="btn-icon" title="Eliminar">🗑️</button>
+  </form>
+
+  <!-- Modo edición (oculto por defecto) -->
+  <div class="edit-actions" style="display:none;">
+    <button type="button" class="btn-small btn-save" title="Guardar">💾</button>
+    <button type="button" class="btn-small btn-cancel" title="Cancelar">✖</button>
+  </div>
+</div>
+

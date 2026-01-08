@@ -1,0 +1,112 @@
+<!-- templates/components/top_toolbar.html -->
+<form class="toolbar" method="get" action="{{ url_for('planes.index') }}">
+  <input type="hidden" name="dim" value="{{ current_dim.slug }}">
+  {% if view_mode %}<input type="hidden" name="view" value="{{ view_mode }}">{% endif %}
+  {% if view_mode == 'plan' and active_subdimension %}<input type="hidden" name="subdim" value="{{ active_subdimension }}">{% endif %}
+  {% if active_instrumento %}<input type="hidden" name="inst" value="{{ active_instrumento }}">{% endif %}
+  {% if active_nivel_madurez %}<input type="hidden" name="nivel" value="{{ active_nivel_madurez }}">{% endif %}
+  {% if order %}<input type="hidden" name="order" value="{{ order }}">{% endif %}
+  {% if direction %}<input type="hidden" name="dir" value="{{ direction }}">{% endif %}
+  
+  <input type="search" name="q" value="{{ q }}" placeholder="Buscar..."
+         aria-label="Buscar" title="Se busca en: {{ (searchable_cols or [])|join(', ') }}" />
+  <button type="submit">Buscar</button>
+  {% if q %}
+    <a class="btn-small" href="{{ url_for('planes.index', dim=current_dim.slug, view=view_mode, subdim=active_subdimension if view_mode == 'plan' else none, inst=active_instrumento if active_instrumento else none, nivel=active_nivel_madurez if active_nivel_madurez else none, order=order, dir=direction) }}" title="Limpiar búsqueda">Limpiar</a>
+    <span class="btn-small" style="border:none; background:transparent; cursor:default; color:#6b7280;">{{ meta.total }} resultado{{ 's' if (meta.total or 0) != 1 else '' }}</span>
+  {% endif %}
+</form>
+
+<div class="toolbar-right" style="display:flex; gap:8px; align-items:center;">
+  {# Formulario unificado para filtros de plan en modo "plan" #}
+  {% if view_mode == 'plan' and (subdimension_options or instrumento_options or nivel_madurez_options) %}
+    <form method="get" action="{{ url_for('planes.index') }}" class="subdimension-filter" style="display:flex; gap:6px; align-items:center;">
+      <input type="hidden" name="dim" value="{{ current_dim.slug }}">
+      <input type="hidden" name="view" value="plan">
+      {% if order %}<input type="hidden" name="order" value="{{ order }}">{% endif %}
+      {% if direction %}<input type="hidden" name="dir" value="{{ direction }}">{% endif %}
+      {% if q %}<input type="hidden" name="q" value="{{ q }}">{% endif %}
+      
+      {# Selector de Nivel de Madurez (solo para Gobernanza de Datos) #}
+      {% if requires_nivel_madurez and nivel_madurez_options %}
+        <label for="nivel-select" style="font-size:14px; font-weight:600;">Nivel de Madurez:</label>
+        <select name="nivel" id="nivel-select" style="max-width:150px;">
+          {% for n in (nivel_madurez_options or []) %}
+            <option value="{{ n }}" {% if active_nivel_madurez == n %}selected{% endif %}>{{ n }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      
+      {# Selector de Instrumento (solo para Calidad Web) #}
+      {% if requires_instrumento and instrumento_options %}
+        <label for="inst-select" style="font-size:14px; font-weight:600;">Instrumento:</label>
+        <select name="inst" id="inst-select" style="max-width:180px;" title="{{ active_instrumento }}">
+          {% for i in (instrumento_options or []) %}
+            <option value="{{ i }}" {% if active_instrumento == i %}selected{% endif %} title="{{ i }}">{{ i }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      
+      {# Selector de Subdimensión (para todas las dimensiones) #}
+      {% if subdimension_options %}
+        <label for="subdim-select" style="font-size:14px; font-weight:600;">Plan:</label>
+        <select name="subdim" id="subdim-select" style="max-width:150px;" title="{{ active_subdimension }}">
+          {% for s in (subdimension_options or []) %}
+            <option value="{{ s }}" {% if active_subdimension == s %}selected{% endif %} title="{{ s }}">{{ s }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      
+      {# Botón único para aplicar todos los cambios #}
+      <button type="submit" class="btn-small">Cambiar</button>
+    </form>
+  {% endif %}
+  
+  {# BOTONES DE REGENERACIÓN - Vista por plan (individual) #}
+  {% if view_mode == 'plan' and active_subdimension %}
+    <button type="button" class="btn-small btn-regen" 
+            data-dim="{{ current_dim.slug }}"
+            data-subdimension="{{ active_subdimension }}"
+            data-instrumento="{{ active_instrumento or '' }}"
+            data-nivel-madurez="{{ active_nivel_madurez or '' }}"
+            onclick="regeneratePlan(this.dataset.dim, this.dataset.subdimension, this.dataset.instrumento, this.dataset.nivelMadurez)"
+            title="Regenerar plan de Agente Maestro para esta subdimensión">
+      🔄 Regenerar plan Agente Maestro
+    </button>
+    <button type="button" class="btn-small btn-regen-comite" 
+            onclick="regeneratePlanComiteSubdimension('{{ current_dim.slug }}', '{{ active_subdimension }}', '{{ active_instrumento or '' }}', '{{ active_nivel_madurez or '' }}')"
+            title="Regenerar TODOS los planes del Comité para esta subdimensión (procesa todas las filas)">
+      🤝 Regenerar plan Comité
+    </button>
+  {% endif %}
+  
+  {# BOTONES DE REGENERACIÓN - Vista total (completa) #}
+  {% if view_mode == 'total' %}
+    <button type="button" class="btn-small btn-regen-full" 
+            onclick="regenerateFull('{{ current_dim.slug }}')"
+            title="Regenerar todos los planes de Agente Maestro para esta dimensión">
+      🔄 Regenerar completo Agente Maestro
+    </button>
+    <button type="button" class="btn-small btn-regen-comite-full" 
+            onclick="regenerateFullComite('{{ current_dim.slug }}')"
+            title="Regenerar TODOS los planes del Comité para toda la dimensión (procesa todas las subdimensiones)">
+      🤝 Regenerar completo Comité
+    </button>
+  {% endif %}
+  
+  {# Botón para alternar entre vista plan/total #}
+  {% if view_mode == 'plan' %}
+    <a class="btn-small" href="{{ url_for('planes.index', dim=current_dim.slug, view='total', q=q, order=order, dir=direction) }}" title="Ver todas las filas">Vista total</a>
+  {% else %}
+    <a class="btn-small" href="{{ url_for('planes.index', dim=current_dim.slug, view='plan', q=q, order=order, dir=direction) }}" title="Ver por plan individual">Vista por plan</a>
+  {% endif %}
+
+  {# Botón de vista comparativa: solo en modo "plan" #}
+  {% if view_mode == 'plan' %}
+    {% if comparative %}
+      <a class="btn-small" href="{{ url_for('planes.index', dim=current_dim.slug, view='plan', subdim=active_subdimension, inst=active_instrumento if active_instrumento else none, nivel=active_nivel_madurez if active_nivel_madurez else none, q=q, order=order, dir=direction, comparative='false') }}" title="Ver tabla normal">Vista normal</a>
+    {% else %}
+      <a class="btn-small" href="{{ url_for('planes.index', dim=current_dim.slug, view='plan', subdim=active_subdimension, inst=active_instrumento if active_instrumento else none, nivel=active_nivel_madurez if active_nivel_madurez else none, q=q, order=order, dir=direction, comparative='true') }}" title="Comparar Agente Maestro vs Comité">Vista comparativa</a>
+    {% endif %}
+  {% endif %}
+</div>

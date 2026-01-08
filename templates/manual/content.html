@@ -1,0 +1,252 @@
+<h2>¿Qué es esta aplicación?</h2>
+<p>
+  El <strong>Editor de Planes de Transformación Digital</strong> es una herramienta web que te permite gestionar
+  y mejorar los planes estratégicos de transformación digital de tu organización.
+</p>
+<ul>
+  <li>Visualizar y editar planes de transformación</li>
+  <li>Regenerar planes usando Inteligencia Artificial</li>
+  <li>Comparar diferentes versiones de planes</li>
+  <li>Importar y exportar datos en formato JSON</li>
+  <li>Buscar y filtrar información específica</li>
+</ul>
+
+<h2>Primeros Pasos</h2>
+<h3>Acceder a la aplicación</h3>
+<ol>
+  <li>Abre tu navegador web (Chrome, Firefox, Edge, Safari).</li>
+  <li>Ingresa la URL de la aplicación proporcionada por tu administrador.</li>
+  <li>Verás la página principal con las dimensiones de transformación digital.</li>
+</ol>
+
+<h3>Interfaz principal</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│  📋 Editor de Planes - PTD                                      │
+├─────────────────────────────────────────────────────────────────┤
+│  [Buscar...] [Buscar]                                           │
+│  [Nivel/Instrumento/Plan] [Cambiar] 🤖 🤝 Vista total          │
+│                                                 Vista comparativa│
+├─────────────────────────────────────────────────────────────────┤
+│  [Tabs: Gobernanza | Calidad Web | Procedimiento]              │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  [Tabla con planes de transformación]                          │
+│  - Click en columnas para filtrar y ordenar                    │
+│  - Botón + para agregar fila debajo (solo Vista por Planes)    │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+
+<h2>Navegación Principal</h2>
+<h3>Pestañas de Dimensiones</h3>
+
+<h3>Gobernanza de Datos</h3>
+<ul>
+  <li><strong>¿Qué es?</strong> Planes para mejorar la gestión y calidad de los datos.</li>
+  <li><strong>Incluye:</strong> Políticas de datos, roles y responsabilidades, procesos de gestión.</li>
+  <li><strong>Cuándo usar:</strong> Para organizar cómo tu institución maneja la información.</li>
+</ul>
+
+<h3>Calidad Web</h3>
+<ul>
+  <li><strong>¿Qué es?</strong> Planes para mejorar la presencia web institucional.</li>
+  <li><strong>Incluye:</strong> Diseño web, accesibilidad, contenidos digitales.</li>
+  <li><strong>Cuándo usar:</strong> Para mejorar tu sitio web y servicios en línea.</li>
+</ul>
+
+<h3>Procedimiento Administrativo</h3>
+<ul>
+  <li><strong>¿Qué es?</strong> Planes para digitalizar trámites y procedimientos.</li>
+  <li><strong>Incluye:</strong> Automatización de procesos, sistemas de gestión, atención ciudadana.</li>
+  <li><strong>Cuándo usar:</strong> Para hacer más eficientes los trámites institucionales.</li>
+</ul>
+
+<h3>Barra de Herramientas Superior</h3>
+<p>La toolbar se divide en dos secciones:</p>
+
+<h4>Sección Izquierda - Búsqueda</h4>
+<table>
+  <thead>
+    <tr><th>Elemento</th><th>Función</th><th>Cómo usar</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Campo de búsqueda</strong></td><td>Busca texto en todas las columnas visibles</td><td>Escribe y presiona Enter o click en “Buscar”</td></tr>
+    <tr><td><strong>Botón Buscar</strong></td><td>Ejecuta la búsqueda</td><td>Click para aplicar filtro de búsqueda</td></tr>
+    <tr><td><strong>Botón Limpiar</strong></td><td>Quita el filtro de búsqueda</td><td>Aparece solo cuando hay búsqueda activa</td></tr>
+  </tbody>
+</table>
+
+<h4>Sección Derecha - Filtros y Acciones</h4>
+<table>
+  <thead>
+    <tr><th>Botón/Selector</th><th>Función</th><th>Cuándo usar</th><th>Disponible en</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Nivel de Madurez</strong></td><td>Filtra planes por nivel específico</td><td>Solo en Gobernanza de Datos</td><td>Vista por Planes</td></tr>
+    <tr><td><strong>Instrumento</strong></td><td>Filtra planes por instrumento</td><td>Solo en Calidad Web</td><td>Vista por Planes</td></tr>
+    <tr><td><strong>Plan</strong></td><td>Filtra por subdimensión específica</td><td>Todas las dimensiones</td><td>Vista por Planes</td></tr>
+    <tr><td><strong>Cambiar</strong></td><td>Aplica los filtros seleccionados</td><td>Después de cambiar selectores</td><td>Vista por Planes</td></tr>
+    <tr><td><strong>Regenerar plan Agente Maestro</strong></td><td>Regenera plan usando IA</td><td>Mejorar plan completo automáticamente</td><td>Vista por Planes</td></tr>
+    <tr><td><strong>Regenerar plan Comité</strong></td><td>Refina plan con 5 agentes especializados</td><td>Análisis detallado de un plan</td><td>Vista por Planes</td></tr>
+    <tr><td><strong>Vista total / Vista por plan</strong></td><td>Cambia modo de visualización</td><td>Alternar modo de visualización</td><td>Siempre</td></tr>
+    <tr><td><strong>Vista comparativa / Vista normal</strong></td><td>Compara Agente Maestro vs Comité</td><td>Ver diferencias lado a lado</td><td>Vista por Planes</td></tr>
+  </tbody>
+</table>
+
+<h2>Trabajar con Planes</h2>
+<h3>Modos de Visualización</h3>
+
+<h4>Vista por Planes (Modo Filtrado)</h4>
+<ul>
+  <li>Por defecto al entrar a la aplicación.</li>
+  <li>Muestra solo los planes de una subdimensión específica.</li>
+  <li>Selectores en la toolbar para cambiar filtros.</li>
+  <li>Botón <strong>+</strong> visible en cada fila para agregar planes.</li>
+  <li>Ideal para trabajar enfocado en un plan específico.</li>
+</ul>
+
+<h4>Vista Total (Modo Completo)</h4>
+<ul>
+  <li>Muestra todos los planes de la dimensión.</li>
+  <li>Sin filtros aplicados.</li>
+  <li>No hay botón + en las filas.</li>
+  <li>Ideal para ver el panorama completo.</li>
+</ul>
+
+<div class="manual-callout">
+  <strong>Cambiar entre vistas:</strong> Click en “Vista total” o “Vista por plan” en la toolbar.
+</div>
+
+<h3>Vista Comparativa</h3>
+<ul>
+  <li>Disponible en <strong>Vista por Planes</strong>.</li>
+  <li>Permite ver lado izquierdo: Agente Maestro; lado derecho: Comité.</li>
+  <li>Solo muestra columnas: Tipo y Descripción.</li>
+</ul>
+
+<h3>Editar un plan</h3>
+<ol>
+  <li>Localiza el plan en la tabla.</li>
+  <li>Haz clic en el botón ✏️ (lápiz) en la columna “Acciones”.</li>
+  <li>Modifica los campos necesarios.</li>
+  <li>Haz clic en “Guardar” para aplicar los cambios.</li>
+  <li>O “Cancelar” para descartar cambios.</li>
+</ol>
+
+<div class="manual-callout">
+  <strong>Tip:</strong> Los cambios se guardan inmediatamente en la base de datos.
+</div>
+
+<h3>Agregar un nuevo plan</h3>
+<div class="manual-callout">
+  <strong>Importante:</strong> El botón + solo aparece en <strong>Vista por Planes</strong>.
+</div>
+
+<h4>Método 1: Agregar fila debajo de otra (recomendado)</h4>
+<ol>
+  <li>Localiza la fila después de la cual quieres agregar.</li>
+  <li>Click en el botón + en la columna de acciones de esa fila.</li>
+  <li>Se inserta una nueva fila vacía debajo.</li>
+  <li>Completa los campos directamente en la tabla.</li>
+</ol>
+
+<h4>Método 2: Edición en formulario modal</h4>
+<ol>
+  <li>Haz doble click en cualquier celda de la fila.</li>
+  <li>Se abre un formulario con todos los campos.</li>
+  <li>Completa o modifica los campos.</li>
+  <li>Click en “Guardar” o “Cancelar”.</li>
+</ol>
+
+<h3>Eliminar un plan</h3>
+<ol>
+  <li>Localiza el plan a eliminar.</li>
+  <li>Haz clic en 🗑️ en “Acciones”.</li>
+  <li>Confirma la eliminación.</li>
+</ol>
+
+<div class="manual-callout">
+  <strong>Advertencia:</strong> La eliminación es permanente y no se puede deshacer.
+</div>
+
+<h2>Regeneración con IA</h2>
+<p>La aplicación ofrece dos sistemas de regeneración con Inteligencia Artificial:</p>
+
+<h3>Sistema 1: Agente Maestro</h3>
+<ul>
+  <li><strong>Qué hace:</strong> Regenera planes completos del plan seleccionado usando un solo agente.</li>
+  <li><strong>Disponibilidad:</strong> Solo en Vista por Planes.</li>
+</ul>
+
+<h3>Sistema 2: Comité de Agentes</h3>
+<ul>
+  <li><strong>Qué hace:</strong> Refina el plan seleccionado usando múltiples agentes especializados.</li>
+  <li><strong>Disponibilidad:</strong> Solo en Vista por Planes.</li>
+</ul>
+
+<h3>Comparación de sistemas</h3>
+<table>
+  <thead>
+    <tr><th>Característica</th><th>Agente Maestro</th><th>Comité</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Alcance</td><td>Plan completo según filtros</td><td>Plan específico seleccionado</td></tr>
+    <tr><td>Velocidad</td><td>Rápido (2-5 min)</td><td>Más lento (5-8 min)</td></tr>
+    <tr><td>Profundidad</td><td>Análisis completo</td><td>Debate multidimensional</td></tr>
+  </tbody>
+</table>
+
+<h2>Importar y Exportar Datos</h2>
+<h3>Exportar datos</h3>
+<ol>
+  <li>Haz clic en “Exportar”.</li>
+  <li>Selecciona qué exportar (dimensión o todas).</li>
+  <li>Elige formato (JSON o CSV).</li>
+  <li>Descarga el archivo.</li>
+</ol>
+
+<h3>Importar datos</h3>
+<ol>
+  <li>Prepara tu archivo JSON con el formato correcto.</li>
+  <li>Haz clic en “Importar”.</li>
+  <li>Selecciona el archivo.</li>
+  <li>Elige modo de importación y confirma.</li>
+</ol>
+
+<h3>Formato de importación (JSON)</h3>
+<pre><code>{
+  "dimension": "Gobernanza de Datos",
+  "planes": [
+    {
+      "subdimension": "Estrategia y Gobierno del Dato",
+      "instrumento": "Política de Datos Abiertos",
+      "nivel_madurez": "Definido",
+      "hito": "Implementar catálogo de datos abiertos",
+      "actividad": "Desarrollar plataforma web para publicación de datasets"
+    }
+  ]
+}</code></pre>
+
+<h2>Configuración</h2>
+<p>Accede a configuración desde el botón ⚙️ en la barra superior y ajusta opciones como filas por página, modelo/temperatura y comportamiento de importación/exportación.</p>
+
+<h2>Preguntas Frecuentes</h2>
+<ul>
+  <li><strong>¿Qué diferencia hay entre Agente Maestro y Comité?</strong> Agente Maestro es rápido para regeneración completa; Comité es más detallado para refinamiento.</li>
+  <li><strong>¿Cuánto tarda la regeneración?</strong> Depende del alcance (subdimensión vs dimensión completa).</li>
+  <li><strong>¿Puedo exportar a Excel?</strong> Sí, exporta a CSV y ábrelo con Excel.</li>
+</ul>
+
+<h2>Solución de Problemas</h2>
+<ul>
+  <li><strong>No puedo editar un plan:</strong> revisa permisos y conexión.</li>
+  <li><strong>La regeneración no funciona:</strong> verifica filtros, consola del navegador (F12) y reintenta.</li>
+  <li><strong>La importación falla:</strong> valida formato JSON y nombres exactos de subdimensión.</li>
+</ul>
+
+<h2>Contacto y Soporte</h2>
+<p>
+  Para ayuda adicional, contacta al equipo de soporte de tu institución.
+</p>
+
+<h2>Actualizaciones del Manual</h2>
+<p><strong>Versión:</strong> 2.0 — <strong>Fecha:</strong> 12 de Noviembre de 2025.</p>

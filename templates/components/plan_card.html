@@ -1,0 +1,22 @@
+<!-- templates/components/plan_card.html -->
+<div class="plan-card">
+  <div class="plan-card-header">
+    <div class="plan-card-title">
+      {{ title or "Plan" }}
+    </div>
+    <div class="plan-card-actions">
+      <form method="post"
+            action="{{ url_for('planes.regenerate', dim=current_dim.slug, row_id=row.id) }}?target={{ target }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" class="btn-small" title="Regenerar">↻</button>
+      </form>
+    </div>
+  </div>
+  <div class="plan-card-body">
+    {% if value %}
+      <div class="plan-text">{{ value }}</div>
+    {% else %}
+      <em class="muted">Sin contenido</em>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  {% include "components/tabs.html" %}
+  <div class="card-body">
+    <div class="toolbar-wrapper">
+      {% include "components/top_toolbar.html" %}
+    </div>
+
+    {% if comparative and view_mode == 'plan' %}
+      {# Vista comparativa: dos tablas lado a lado #}
+      {% include "components/comparative_view.html" %}
+    {% else %}
+      {# Vista normal: tabla única #}
+      <div class="table-wrapper">
+      <table class="data-table" id="main-table"
+             data-dim="{{ current_dim.slug }}"
+             data-order="{{ order or '' }}"
+             data-dir="{{ direction or '' }}"
+        data-subdim="{{ active_subdimension or '' }}"
+        data-page="{{ meta.page or 1 }}">
+        <thead>
+          <tr>
+            <th class="col-actions">Acciones</th>
+            {% for col in visible_cols %}
+              {% set is_current = (order == col) %}
+              {% set next_dir = 'desc' if is_current and direction != 'desc' else 'asc' %}
+              <th class="{% if col.startswith('N_') or col.endswith('_id') %}is-number{% endif %}">
+                <a class="th-sort" href="{{ url_for('planes.index', dim=current_dim.slug, q=q, order=col, dir=next_dir, page=meta.page, subdim=active_subdimension if order in ['Subdimension','subdimension'] else request.args.get('subdim'), inst=active_instrumento if active_instrumento else none, nivel=active_nivel_madurez if active_nivel_madurez else none) }}">
+                  <span class="th-label">{{ pretty_label(col) }}</span>
+                  <span class="sort-indicator">{% if is_current %}{{ '▲' if direction != 'desc' else '▼' }}{% endif %}</span>
+                </a>
+              </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% if rows %}
+            {% for row in rows %}
+              <tr id="row-{{ row.id }}">
+                <td class="col-actions">
+                  {% include "components/table_actions.html" %}
+                </td>
+
+                {# Formulario inline para la fila #}
+        <form method="post"
+          action="{{ url_for('planes.edit_inline', dim=current_dim.slug, row_id=row.id) }}"
+          class="inline-edit-form"
+          id="inline-form-{{ row.id }}">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                  {% for col in visible_cols %}
+          <td class="cell {% if col.startswith('N_') or col.endswith('_id') %}is-number{% endif %}"
+                        data-col="{{ col }}"
+                        data-type="{% if is_plan_column(col) %}textarea{% else %}text{% endif %}">
+                      {% set val = row[col] %}
+                      {% set val_str = (val|string) if val is not none else '' %}
+                      {% set val_len = val_str|length %}
+                      <div class="cell-content clamp-4" title="{{ val_str }}">
+                        {% if (col == 'Iniciativa' or col == 'Nombre_Iniciativa') and val_str %}
+                          <a href="{{ url_for('planes.view_initiative', dim=current_dim.slug, init_name=val_str) }}">{{ val_str }}</a>
+                        {% else %}
+                          {{ val_str }}
+                        {% endif %}
+                      </div>
+                      {% if val_len > 220 %}
+                        <button type="button" class="toggle-more" aria-expanded="false">Ver más</button>
+                      {% endif %}
+                    </td>
+                  {% endfor %}
+                </form>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr><td colspan="{{ 1 + visible_cols|length }}"><em>No hay registros en esta dimensión.</em></td></tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination">
+      {% set total_pages = meta.total_pages or 1 %}
+      {% set current = meta.page or 1 %}
+
+      {# Construye el conjunto de páginas a mostrar: 1, actual-1, actual, actual+1, última #}
+      {% set ns = namespace(pages=[1]) %}
+      {% if current-1 >= 1 %}{% set _ = ns.pages.append(current-1) %}{% endif %}
+      {% if current not in ns.pages and current <= total_pages %}{% set _ = ns.pages.append(current) %}{% endif %}
+      {% if current+1 <= total_pages %}{% set _ = ns.pages.append(current+1) %}{% endif %}
+      {% if total_pages not in ns.pages %}{% set _ = ns.pages.append(total_pages) %}{% endif %}
+
+      {% set ordered = ns.pages|unique|sort %}
+      {% set track = namespace(last=None) %}
+      {% for p in ordered %}
+        {% if track.last is not none and (p - track.last) > 1 %}
+          <span class="page-link" style="pointer-events:none;border-style:dashed;">…</span>
+        {% endif %}
+          <a class="page-link {% if p == current %}active{% endif %}"
+             href="{{ url_for('planes.index', dim=current_dim.slug, q=q, order=order, dir=direction, page=p, subdim=active_subdimension if order in ['Subdimension','subdimension'] else request.args.get('subdim'), inst=active_instrumento if active_instrumento else none, nivel=active_nivel_madurez if active_nivel_madurez else none) }}">{{ p }}</a>
+        {% set track.last = p %}
+      {% endfor %}
+    </div>
+    {% endif %} {# Fin de vista normal vs comparativa #}
+  </div>
+</div>
+{% endblock %}
