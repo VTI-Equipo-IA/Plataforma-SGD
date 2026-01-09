@@ -1,10 +1,10 @@
-# 🧠 Editor de Planes PTD (Flask + PostgreSQL + IA)
+# 🧠 Editor de Portafolio PTD (Flask + PostgreSQL + IA)
 
-**Aplicación web para la gestión y regeneración inteligente de Planes de Transformación Digital**
+**Aplicación web para la gestión y regeneración inteligente de un Portafolio de Transformación Digital**
 
-Sistema modular basado en Flask que permite gestionar planes estratégicos de transformación digital mediante una interfaz web intuitiva, con capacidades avanzadas de regeneración mediante Inteligencia Artificial (GPT-4 y sistemas multi-agente).
+Sistema modular basado en Flask que permite gestionar un portafolio estratégico de transformación digital mediante una interfaz web intuitiva, con capacidades avanzadas de regeneración mediante Inteligencia Artificial (GPT-4 y sistemas multi-agente).
 
-> 📖 **Para usuarios finales:** Ver [MANUAL_USUARIO.md](MANUAL_USUARIO.md) o acceder vía /manual/  
+> 📖 **Para usuarios finales:** Ver [doc/MANUAL_USUARIO.md](doc/MANUAL_USUARIO.md) o acceder vía /Plataforma-SGD/manual/  
 > 👨‍💻 **Para desarrolladores:** Este README
 
 ---
@@ -29,8 +29,8 @@ Sistema modular basado en Flask que permite gestionar planes estratégicos de tr
 
 ## ✨ Características Principales
 
-### Gestión de Planes
-- ✅ **CRUD completo** de planes de transformación digital
+### Gestión de Portafolio
+- ✅ **CRUD completo** de elementos del portafolio de transformación digital
 - 📊 **3 dimensiones** organizadas en pestañas (Gobernanza, Calidad Web, Procedimiento)
 - 🔍 **Búsqueda avanzada** multi-columna con casting de tipos ENUM
 - 📑 **Paginación** y ordenamiento dinámico por columnas
@@ -51,7 +51,7 @@ Sistema modular basado en Flask que permite gestionar planes estratégicos de tr
 
 ### Regeneración con IA
 - 🤖 **Agente Maestro**: Regeneración de subdimensiones completas usando GPT-4
-- 🤝 **Comité de Agentes**: Refinamiento de planes individuales con 5 agentes especializados
+- 🤝 **Comité de Agentes**: Refinamiento de elementos del portafolio con 5 agentes especializados
 - 📈 **Seguimiento en tiempo real** del progreso de regeneración
 - ⚡ **Ejecución asíncrona** mediante subprocess y threading
 - 🔄 **Comparación de versiones** antes/después de regeneración
@@ -112,7 +112,7 @@ El proyecto sigue una **arquitectura en capas** (Layered Architecture) con separ
 
 ### Flujo de Datos
 
-#### Lectura de Planes
+#### Lectura de Portafolio
 ```
 Usuario → Browser → Flask Route → Repository Service → SQLAlchemy → PostgreSQL
                                                                       ↓
@@ -193,7 +193,7 @@ Modal Progress Bar Update
 
 ## �️ Estructura del proyecto
 ```
-editor-planes/
+Plataforma-SGD/
 ├─ app.py                      # App Flask y rutas generales
 ├─ blueprints/
 │  ├─ planes/
@@ -518,7 +518,7 @@ PostgreSQL UPDATE (fila específica)
 ```
 
 **Características:**
-- ✅ Refina **planes individuales** (por `row_id`)
+- ✅ Refina **elementos del portafolio** (por `row_id`)
 - ✅ Usa **5 agentes especializados** que debaten
 - ✅ **Más lento** pero **más detallado** (5-8 minutos)
 - ✅ Modos: `regen-planes-only`, `regen-hitos-only`, o ambos
@@ -555,11 +555,11 @@ python comite/scripts/proc_db_row_comite.py 789 activity 3
 
 ### Rutas Principales
 
-#### Planes - Visualización
+#### Portafolio - Visualización
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| GET | `/planes/<dimension>` | Lista planes de una dimensión con paginación |
+| GET | `/planes/<dimension>` | Lista elementos del portafolio de una dimensión con paginación |
 | GET | `/planes/<dimension>?search=texto` | Búsqueda multi-columna |
 | GET | `/planes/<dimension>?sort=columna&order=asc` | Ordenamiento |
 
@@ -570,14 +570,14 @@ python comite/scripts/proc_db_row_comite.py 789 activity 3
 - `page`: Número de página (default: 1)
 - `per_page`: Filas por página (default: 25)
 
-#### Planes - CRUD
+#### Portafolio - CRUD
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| POST | `/planes/<dimension>/create` | Crea nuevo plan |
-| GET | `/planes/<dimension>/edit/<id>` | Obtiene plan para editar |
-| POST | `/planes/<dimension>/update/<id>` | Actualiza plan existente |
-| POST | `/planes/<dimension>/delete/<id>` | Elimina plan |
+| POST | `/planes/<dimension>/create` | Crea nuevo elemento del portafolio |
+| GET | `/planes/<dimension>/edit/<id>` | Obtiene elemento del portafolio para editar |
+| POST | `/planes/<dimension>/update/<id>` | Actualiza elemento del portafolio existente |
+| POST | `/planes/<dimension>/delete/<id>` | Elimina elemento del portafolio |
 
 **Request body (JSON):**
 ```json
@@ -601,7 +601,7 @@ python comite/scripts/proc_db_row_comite.py 789 activity 3
 **Importar Excel:**
 ```bash
 curl -X POST http://localhost:5000/planes/import \
-  -F "file=@planes.xlsx"
+    -F "file=@portafolio.xlsx"
 ```
 
 #### Regeneración - Agente Maestro
@@ -646,7 +646,7 @@ curl -X POST http://localhost:5000/planes/import \
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| POST | `/planes/<dim>/regenerate-plan-comite` | Refina plan por row_id |
+| POST | `/planes/<dim>/regenerate-plan-comite` | Refina elemento del portafolio por row_id |
 | GET | `/planes/<dim>/comite-status/<task_id>` | Consulta progreso |
 | POST | `/planes/<dim>/cancel-comite/<task_id>` | Cancela tarea |
 

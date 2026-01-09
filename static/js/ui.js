@@ -352,7 +352,7 @@ function setupDensityToggle(){
 }
 
 // ============================================================================
-// REGENERACIÓN DE PLANES CON AGENTE MAESTRO
+// REGENERACIÓN DE PORTAFOLIO CON AGENTE MAESTRO
 // ============================================================================
 
 let currentRegenerationTask = null;
@@ -368,7 +368,7 @@ function showRegenerationModal(message) {
       <div class="modal-overlay">
         <div class="modal-content">
           <div class="modal-header">
-            <h3>Regenerando planes</h3>
+            <h3>Regenerando portafolio</h3>
           </div>
           <div class="modal-body">
             <div class="spinner"></div>
@@ -419,7 +419,7 @@ function updateRegenerationStatus(status) {
     if (messageEl) messageEl.textContent = "✓ " + status.message;
     setTimeout(() => {
       hideRegenerationModal();
-      window.location.reload(); // Recargar para ver los nuevos planes
+      window.location.reload(); // Recargar para ver los cambios
     }, 2000);
   } else if (status.status === "failed") {
     if (messageEl) messageEl.textContent = "✗ Error: " + (status.error || "Error desconocido");
@@ -466,7 +466,7 @@ function regeneratePlan(dim, subdimension, instrumento, nivelMadurez) {
     return;
   }
   
-  if (!confirm(`¿Desea regenerar el plan de Agente Maestro para "${subdimension}"?\n\nEsto sobrescribirá los planes existentes.`)) {
+  if (!confirm(`¿Desea regenerar el portafolio (Agente Maestro) para "${subdimension}"?\n\nEsto sobrescribirá el portafolio existente.`)) {
     return;
   }
   
@@ -524,7 +524,7 @@ function regenerateFull(dim) {
     return;
   }
   
-  if (!confirm("¿Desea regenerar TODOS los planes de Agente Maestro para esta dimensión?\n\nEsto puede tomar varios minutos y sobrescribirá todos los planes existentes.")) {
+  if (!confirm("¿Desea regenerar TODO el portafolio (Agente Maestro) para esta dimensión?\n\nEsto puede tomar varios minutos y sobrescribirá el portafolio existente.")) {
     return;
   }
   
@@ -610,7 +610,7 @@ function cancelRegeneration() {
 // ============================================================================
 
 /**
- * Regenera un plan individual usando el sistema de comité
+ * Regenera un elemento del portafolio usando el sistema de comité
  * NOTA: Esta función está lista para usar cuando los scripts del comité estén disponibles
  * 
  * @param {number} rowId - ID de la fila a procesar
@@ -647,7 +647,7 @@ function regeneratePlanComite(rowId, mode = 'regen-planes-only') {
 }
 
 /**
- * Regenera todos los planes del comité para una subdimensión específica
+ * Regenera todo el portafolio del comité para una subdimensión específica
  * Esto ejecutará el script main_*_bd.py con filtros de subdimensión
  */
 function regeneratePlanComiteSubdimension(dim, subdimension, instrumento, nivelMadurez) {
@@ -656,7 +656,7 @@ function regeneratePlanComiteSubdimension(dim, subdimension, instrumento, nivelM
     return;
   }
   
-  if (!confirm(`¿Desea regenerar TODOS los planes del Comité para "${subdimension}"?\n\nEsto ejecutará el sistema completo de comité con 5 agentes especializados.\nEl proceso puede tomar varios minutos.`)) {
+  if (!confirm(`¿Desea regenerar TODO el portafolio del Comité para "${subdimension}"?\n\nEsto ejecutará el sistema completo de comité con 5 agentes especializados.\nEl proceso puede tomar varios minutos.`)) {
     return;
   }
   
@@ -709,7 +709,7 @@ function regeneratePlanComiteSubdimension(dim, subdimension, instrumento, nivelM
 }
 
 /**
- * Regenera todos los planes del comité para toda la dimensión
+ * Regenera todo el portafolio del comité para toda la dimensión
  * Esto procesará todas las subdimensiones de la dimensión actual
  */
 function regenerateFullComite(dim) {
@@ -718,7 +718,7 @@ function regenerateFullComite(dim) {
     return;
   }
   
-  if (!confirm("¿Desea regenerar TODOS los planes del Comité para esta dimensión completa?\n\nEsto ejecutará el sistema completo de comité para todas las subdimensiones.\nEl proceso puede tomar mucho tiempo (30+ minutos dependiendo de la cantidad de datos).")) {
+  if (!confirm("¿Desea regenerar TODO el portafolio del Comité para esta dimensión completa?\n\nEsto ejecutará el sistema completo de comité para todas las subdimensiones.\nEl proceso puede tomar mucho tiempo (30+ minutos dependiendo de la cantidad de datos).")) {
     return;
   }
   

@@ -1,6 +1,6 @@
 # services/__init__.py
 """
-Servicios de la aplicación Editor de Planes PTD
+Servicios de la aplicación Editor de Portafolio PTD
 """
 
 from .token_tracker import TokenTracker, get_tracker, extract_usage_from_response

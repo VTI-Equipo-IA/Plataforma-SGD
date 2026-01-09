@@ -6,7 +6,7 @@ Nueva vista independiente para gestionar y versionar el SuperPrompt del Agente M
 
 ## Acceso
 
-La vista está disponible en una ruta separada de la gestión de planes:
+La vista está disponible en una ruta separada de la gestión de portafolio:
 
 ```
 http://localhost:5000/prompts/
@@ -143,7 +143,7 @@ POST /prompts/api/restore/<id> → Restaurar versión (elimina posteriores)
 ### Caso 3: Experimentación con A/B testing
 1. Guarda versión actual: `v2.0-production`
 2. Haz cambios experimentales y guarda: `v2.1-test-A`
-3. Prueba con algunos planes
+3. Prueba con algunos elementos del portafolio
 4. Si no funciona: restaura a `v2.0-production`
 5. Si funciona: guarda nueva versión: `v2.1-final`
 

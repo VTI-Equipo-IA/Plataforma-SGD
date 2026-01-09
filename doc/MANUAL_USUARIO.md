@@ -1,12 +1,12 @@
-# 📖 Manual de Usuario - Editor de Planes de Transformación Digital
+# 📖 Manual de Usuario - Editor de Portafolio de Transformación Digital
 
 ## 🎯 ¿Qué es esta aplicación?
 
-El **Editor de Planes de Transformación Digital** es una herramienta web que te permite gestionar y mejorar los planes estratégicos de transformación digital de tu organización. La aplicación te ayuda a:
+El **Editor de Portafolio de Transformación Digital** es una herramienta web que te permite gestionar y mejorar el portafolio estratégico de transformación digital de tu organización. La aplicación te ayuda a:
 
-- ✅ Visualizar y editar planes de transformación
-- 🤖 Regenerar planes usando Inteligencia Artificial
-- 📊 Comparar diferentes versiones de planes
+- ✅ Visualizar y editar elementos del portafolio
+- 🤖 Regenerar el portafolio usando Inteligencia Artificial
+- 📊 Comparar diferentes versiones del portafolio
 - 💾 Importar y exportar datos en formato JSON
 - 🔍 Buscar y filtrar información específica
 
@@ -16,7 +16,7 @@ El **Editor de Planes de Transformación Digital** es una herramienta web que te
 
 1. [Primeros Pasos](#primeros-pasos)
 2. [Navegación Principal](#navegación-principal)
-3. [Trabajar con Planes](#trabajar-con-planes)
+3. [Trabajar con Portafolio](#trabajar-con-portafolio)
 4. [Regeneración con IA](#regeneración-con-ia)
 5. [Importar y Exportar Datos](#importar-y-exportar-datos)
 6. [Comparar Versiones](#comparar-versiones)
@@ -41,18 +41,18 @@ Al abrir la aplicación verás:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  📋 Editor de Planes - PTD                                      │
+│  📋 Editor de Portafolio - PTD                                  │
 ├─────────────────────────────────────────────────────────────────┤
 │  [Buscar...] [Buscar]                                           │
-│  [Nivel/Instrumento/Plan] [Cambiar] 🤖 🤝 Vista total          │
+│  [Nivel/Instrumento/Portafolio] [Cambiar] 🤖 🤝 Vista total     │
 │                                                 Vista comparativa│
 ├─────────────────────────────────────────────────────────────────┤
 │  [Tabs: Gobernanza | Calidad Web | Procedimiento]              │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  [Tabla con planes de transformación]                          │
+│  [Tabla con elementos del portafolio]                          │
 │  - Click en columnas para filtrar y ordenar                    │
-│  - Botón + para agregar fila debajo (solo Vista por Planes)    │
+│  - Botón + para agregar fila debajo (solo Vista por Portafolio)│
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -63,20 +63,20 @@ Al abrir la aplicación verás:
 
 ### Pestañas de Dimensiones
 
-La aplicación organiza los planes en **3 dimensiones**:
+La aplicación organiza el portafolio en **3 dimensiones**:
 
 #### 📊 Gobernanza de Datos
-- **¿Qué es?** Planes para mejorar la gestión y calidad de los datos
+- **¿Qué es?** Elementos del portafolio para mejorar la gestión y calidad de los datos
 - **Incluye:** Políticas de datos, roles y responsabilidades, procesos de gestión
 - **Cuándo usar:** Para organizar cómo tu institución maneja la información
 
 #### 🌐 Calidad Web
-- **¿Qué es?** Planes para mejorar la presencia web institucional
+- **¿Qué es?** Elementos del portafolio para mejorar la presencia web institucional
 - **Incluye:** Diseño web, accesibilidad, contenidos digitales
 - **Cuándo usar:** Para mejorar tu sitio web y servicios en línea
 
 #### 📝 Procedimiento Administrativo
-- **¿Qué es?** Planes para digitalizar trámites y procedimientos
+- **¿Qué es?** Elementos del portafolio para digitalizar trámites y procedimientos
 - **Incluye:** Automatización de procesos, sistemas de gestión, atención ciudadana
 - **Cuándo usar:** Para hacer más eficientes los trámites institucionales
 
@@ -94,62 +94,62 @@ La toolbar se divide en dos secciones:
 #### Sección Derecha - Filtros y Acciones
 | Botón/Selector | Función | Cuándo usar | Disponible en |
 |----------------|---------|-------------|---------------|
-| **Nivel de Madurez** (selector) | Filtra planes por nivel específico | Solo en Gobernanza de Datos | Vista por Planes |
-| **Instrumento** (selector) | Filtra planes por instrumento | Solo en Calidad Web | Vista por Planes |
-| **Plan** (selector) | Filtra por subdimensión específica | Todas las dimensiones | Vista por Planes |
-| **Cambiar** | Aplica los filtros seleccionados | Después de cambiar selectores | Vista por Planes |
-| **🤖 Regenerar plan Agente Maestro** | Regenera plan usando IA (GPT-4) | Mejorar plan completo automáticamente | Vista por Planes |
-| **🤝 Regenerar plan Comité** | Refina plan con 5 agentes especializados | Análisis detallado de un plan | Vista por Planes |
-| **Vista total / Vista por plan** | Cambia entre ver todos o filtrar | Alternar modo de visualización | Siempre |
-| **Vista comparativa / Vista normal** | Compara Agente Maestro vs Comité | Ver diferencias lado a lado | Vista por Planes |
+| **Nivel de Madurez** (selector) | Filtra portafolio por nivel específico | Solo en Gobernanza de Datos | Vista por Portafolio |
+| **Instrumento** (selector) | Filtra portafolio por instrumento | Solo en Calidad Web | Vista por Portafolio |
+| **Portafolio** (selector) | Filtra por subdimensión específica | Todas las dimensiones | Vista por Portafolio |
+| **Cambiar** | Aplica los filtros seleccionados | Después de cambiar selectores | Vista por Portafolio |
+| **🤖 Regenerar portafolio (Agente Maestro)** | Regenera portafolio usando IA (GPT-4) | Mejorar portafolio completo automáticamente | Vista por Portafolio |
+| **🤝 Regenerar portafolio (Comité)** | Refina un elemento del portafolio con 5 agentes especializados | Análisis detallado | Vista por Portafolio |
+| **Vista total / Vista por portafolio** | Cambia entre ver todos o filtrar | Alternar modo de visualización | Siempre |
+| **Vista comparativa / Vista normal** | Compara Agente Maestro vs Comité | Ver diferencias lado a lado | Vista por Portafolio |
 | **📝 Gestión de Prompts** | Edita y versiona el SuperPrompt del Agente Maestro | Modificar comportamiento de la IA | Siempre (desde v2.1) |
-| **📤 Exportar Planes** | Exporta planes a JSON | Hacer backup o migrar datos | Siempre |
+| **📤 Exportar Portafolio** | Exporta portafolio a JSON | Hacer backup o migrar datos | Siempre |
 
 ---
 
-## 📝 Trabajar con Planes
+## 📝 Trabajar con Portafolio
 
 ### Modos de Visualización
 
 La aplicación ofrece dos modos principales:
 
-#### Vista por Planes (Modo Filtrado)
+#### Vista por Portafolio (Modo Filtrado)
 - **Por defecto** al entrar a la aplicación
-- Muestra solo los planes de una subdimensión específica
+- Muestra solo los elementos del portafolio de una subdimensión específica
 - Selectores en la toolbar para cambiar filtros
-- Botón **+** visible en cada fila para agregar planes
-- Ideal para trabajar enfocado en un plan específico
+- Botón **+** visible en cada fila para agregar elementos del portafolio
+- Ideal para trabajar enfocado en una subdimensión específica del portafolio
 
 #### Vista Total (Modo Completo)
-- Muestra **todos** los planes de la dimensión
+- Muestra **todos** los elementos del portafolio de la dimensión
 - Sin filtros aplicados
 - No hay botón + en las filas
 - Ideal para ver el panorama completo
 
-**Cambiar entre vistas:** Click en "Vista total" o "Vista por plan" en la toolbar
+**Cambiar entre vistas:** Click en "Vista total" o "Vista por portafolio" en la toolbar
 
 ### Vista Comparativa
 
-En **Vista por Planes**, puedes activar la **Vista Comparativa** para ver:
+En **Vista por Portafolio**, puedes activar la **Vista Comparativa** para ver:
 - **Lado izquierdo:** Planes del Agente Maestro
 - **Lado derecho:** Planes del Comité
 - Solo muestra columnas: Tipo y Descripción
 - Permite comparar las propuestas de ambos sistemas de IA
 
-**Activar:** Click en "Vista comparativa" (solo disponible en Vista por Planes)
+**Activar:** Click en "Vista comparativa" (solo disponible en Vista por Portafolio)
 
-### Ver la tabla de planes
+### Ver la tabla del portafolio
 
 La tabla muestra información organizada en columnas (pueden variar según la dimensión):
 
 | Columna | Descripción | Ejemplo | Ordenable | Filtrable |
 |---------|-------------|---------|-----------|-----------|
-| **Subdimensión** | Área específica del plan | "Estrategia y Gobierno del Dato" | ✅ | ✅ |
+| **Subdimensión** | Área específica del portafolio | "Estrategia y Gobierno del Dato" | ✅ | ✅ |
 | **Instrumento** | Herramienta o documento | "Política de Datos Abiertos" | ✅ | ✅ |
 | **Nivel Madurez** | Estado de implementación | "Inicial", "Definido" | ✅ | ✅ |
 | **Tipo** | Tipo de actividad/hito | "Hito", "Actividad" | ✅ | ✅ |
-| **Descripción** | Detalle del plan | Texto descriptivo | ✅ | ❌ |
-| **Autor** | Quién creó el plan | "Agente Maestro", "Comité" | ✅ | ✅ |
+| **Descripción** | Detalle del elemento del portafolio | Texto descriptivo | ✅ | ❌ |
+| **Autor** | Quién creó el elemento del portafolio | "Agente Maestro", "Comité" | ✅ | ✅ |
 | **Acciones** | Botones de acción | +, ✏️, 🗑️ | ❌ | ❌ |
 
 ### Funciones de columnas
@@ -166,9 +166,9 @@ La tabla muestra información organizada en columnas (pueden variar según la di
 3. **Selecciona uno o varios valores** para filtrar
 4. **La tabla mostrará solo** las filas que coincidan
 
-### Editar un plan
+### Editar un elemento del portafolio
 
-1. **Localiza el plan** que deseas editar en la tabla
+1. **Localiza el elemento del portafolio** que deseas editar en la tabla
 2. **Haz clic en el botón ✏️** (lápiz) en la columna "Acciones"
 3. **Aparecerá un formulario** con los campos editables:
    - Subdimensión
@@ -182,22 +182,22 @@ La tabla muestra información organizada en columnas (pueden variar según la di
 
 > 💡 **Tip:** Los cambios se guardan inmediatamente en la base de datos
 
-### Agregar un nuevo plan
+### Agregar un nuevo elemento del portafolio
 
-> **Importante:** El botón + solo aparece en **Vista por Planes**
+> **Importante:** El botón + solo aparece en **Vista por Portafolio**
 
 #### Método 1: Agregar fila debajo de otra (recomendado)
 
-1. **Localiza el plan** después del cual quieres agregar uno nuevo
+1. **Localiza el elemento del portafolio** después del cual quieres agregar uno nuevo
 2. **Click en el botón +** en la columna de acciones de esa fila
 3. **Se insertará una nueva fila vacía** justo debajo
 4. **Completa los campos directamente en la tabla** (edición inline)
 5. **Los campos se guardan automáticamente** al salir de cada celda
 
 **Ventajas de este método:**
-- Mantiene el orden lógico de los planes
+- Mantiene el orden lógico del portafolio
 - Más rápido (no abre formulario separado)
-- Ideal para agregar múltiples planes consecutivos
+- Ideal para agregar múltiples elementos consecutivos
 
 #### Método 2: Edición en formulario modal
 
@@ -207,13 +207,13 @@ La tabla muestra información organizada en columnas (pueden variar según la di
 4. **Click en "Guardar"** para aplicar cambios
 5. **O "Cancelar"** para descartar
 
-### Eliminar un plan
+### Eliminar un elemento del portafolio
 
-1. **Localiza el plan** que deseas eliminar
+1. **Localiza el elemento del portafolio** que deseas eliminar
 2. **Haz clic en el botón 🗑️** (papelera) en la columna "Acciones"
-3. **Aparecerá un mensaje de confirmación**: "¿Estás seguro de eliminar este plan?"
+3. **Aparecerá un mensaje de confirmación**: "¿Estás seguro de eliminar este elemento del portafolio?"
 4. **Haz clic en "Confirmar"** para eliminarlo definitivamente
-5. **O haz clic en "Cancelar"** para mantener el plan
+5. **O haz clic en "Cancelar"** para mantener el elemento del portafolio
 
 > ⚠️ **Advertencia:** La eliminación es permanente y no se puede deshacer
 
@@ -228,25 +228,25 @@ La tabla muestra información organizada en columnas (pueden variar según la di
 
 **Tip:** La búsqueda no distingue mayúsculas de minúsculas
 
-#### Filtros en Vista por Planes
+#### Filtros en Vista por Portafolio
 
 Según la dimensión activa, verás diferentes selectores:
 
 **Gobernanza de Datos:**
 - Selector **"Nivel de Madurez"**: Inicial, Gestionado, Definido, Cuantitativo, Optimizado
-- Selector **"Plan"**: Lista de subdimensiones disponibles
+- Selector **"Portafolio"**: Lista de subdimensiones disponibles
 
 **Calidad Web:**
 - Selector **"Instrumento"**: Lista de instrumentos de evaluación
-- Selector **"Plan"**: Lista de subdimensiones específicas del instrumento
+- Selector **"Portafolio"**: Lista de subdimensiones específicas del instrumento
 
 **Procedimiento Administrativo:**
-- Selector **"Plan"**: Lista de subdimensiones disponibles
+- Selector **"Portafolio"**: Lista de subdimensiones disponibles
 
 **Uso de selectores:**
 1. **Selecciona los valores** que desees en cada selector
 2. **Click en "Cambiar"** (botón único para aplicar todos los filtros)
-3. **La tabla se actualizará** mostrando solo los planes que coincidan
+3. **La tabla se actualizará** mostrando solo los elementos del portafolio que coincidan
 
 #### Ordenar por columnas
 1. **Click en el nombre de cualquier columna**
@@ -265,29 +265,30 @@ La aplicación ofrece **dos sistemas de regeneración** con Inteligencia Artific
 ### Sistema 1: Agente Maestro (🤖)
 
 **¿Qué hace?**  
-Regenera **planes completos** del plan seleccionado usando un solo agente de IA potente (GPT-4).
+Regenera el **portafolio** de la subdimensión seleccionada usando un solo agente de IA potente (GPT-4).
 
 **¿Cuándo usarlo?**
-- Estás en **Vista por Planes** con un plan específico seleccionado
-- Quieres actualizar completamente el plan actual
+- Estás en **Vista por Portafolio** con una subdimensión específica seleccionada
+- Estás en **Vista por Portafolio** con una subdimensión específica seleccionada
+- Quieres actualizar completamente el portafolio actual
 - Necesitas regeneración rápida basada en los filtros activos
 - Buscas un enfoque **automatizado y completo**
 
 **Disponibilidad:**
-- ✅ Solo en **Vista por Planes**
+- ✅ Solo en **Vista por Portafolio**
 - ❌ No disponible en Vista Total
 - Requiere tener seleccionados los filtros (Subdimensión, Instrumento o Nivel de Madurez según dimensión)
 
 **Cómo usarlo:**
 
-#### Regenerar el plan actual
+#### Regenerar el portafolio actual
 
-1. **Asegúrate de estar en Vista por Planes**
+1. **Asegúrate de estar en Vista por Portafolio**
 2. **Selecciona los filtros necesarios:**
-   - **Gobernanza de Datos:** Nivel de Madurez + Plan
-   - **Calidad Web:** Instrumento + Plan
-   - **Procedimiento Administrativo:** Solo Plan
-3. **Click en botón 🤖** "Regenerar plan Agente Maestro"
+   - **Gobernanza de Datos:** Nivel de Madurez + Portafolio
+   - **Calidad Web:** Instrumento + Portafolio
+   - **Procedimiento Administrativo:** Solo Portafolio
+3. **Click en botón 🤖** "Regenerar portafolio (Agente Maestro)"
 4. **Aparecerá modal de confirmación** mostrando:
    - Dimensión a regenerar
    - Filtros activos (subdimensión, instrumento, nivel)
@@ -326,7 +327,7 @@ Usuario hace clic en 🤖
 ┌─────────────────────────┐
 │ ✅ ¡Completado!        │
 │                         │
-│ Se regeneraron 12 planes│
+│ Se regeneraron 12 elementos del portafolio │
 │                         │
 │ [Aceptar]              │
 └─────────────────────────┘
@@ -335,16 +336,16 @@ Usuario hace clic en 🤖
 ### Sistema 2: Comité de Agentes (🤝)
 
 **¿Qué hace?**  
-Refina **el plan seleccionado** usando múltiples agentes especializados que debaten y mejoran el plan desde diferentes perspectivas.
+Refina **el elemento del portafolio seleccionado** usando múltiples agentes especializados que debaten y lo mejoran desde diferentes perspectivas.
 
 **¿Cuándo usarlo?**
-- Estás en **Vista por Planes**
+- Estás en **Vista por Portafolio**
 - Quieres un análisis **detallado y multidimensional**
 - Necesitas validación desde **múltiples perspectivas** (legal, técnica, de implementación)
 - Buscas **refinamiento de alta calidad** con debate entre expertos
 
 **Disponibilidad:**
-- ✅ Solo en **Vista por Planes**
+- ✅ Solo en **Vista por Portafolio**
 - ❌ No disponible en Vista Total
 - Funciona con los filtros actualmente seleccionados
 
@@ -372,10 +373,10 @@ Refina **el plan seleccionado** usando múltiples agentes especializados que deb
 
 **Cómo usarlo:**
 
-1. **Asegúrate de estar en Vista por Planes**
-2. **Selecciona los filtros** del plan que quieres refinar
-3. **Click en botón 🤝** "Regenerar plan Comité"
-4. **Aparecerá modal** mostrando el plan seleccionado
+1. **Asegúrate de estar en Vista por Portafolio**
+2. **Selecciona los filtros** del elemento del portafolio que quieres refinar
+3. **Click en botón 🤝** "Regenerar portafolio (Comité)"
+4. **Aparecerá modal** mostrando el elemento seleccionado
 5. **Click en "Iniciar Refinamiento"**
 6. **Observa el progreso del comité:**
    ```
@@ -389,24 +390,24 @@ Refina **el plan seleccionado** usando múltiples agentes especializados que deb
    ```
 7. **Al completar:**
    - Mensaje: "✅ Refinamiento completado con aportes de 5 expertos"
-   - Los 5 agentes han debatido y mejorado el plan
+   - Los 5 agentes han debatido y mejorado el elemento del portafolio
 8. **Click en "Ver cambios"** para comparar versiones
-9. **La página se recarga** mostrando el plan refinado
+9. **La página se recarga** mostrando el elemento del portafolio refinado
 
 **Ejemplo del proceso del comité:**
 
 ```
-Usuario hace clic en 🤝 para un plan específico
+Usuario hace clic en 🤝 para un elemento específico
          ↓
 ┌─────────────────────────────┐
 │  🤝 Refinar con Comité     │
 ├─────────────────────────────┤
-│ Plan seleccionado: #142     │
+│ Elemento seleccionado: #142 │
 │                             │
 │ ¿Qué deseas regenerar?      │
-│ ○ Solo planes               │
+│ ○ Solo portafolio           │
 │ ○ Solo hitos                │
-│ ● Todo el plan              │
+│ ● Todo el portafolio        │
 │                             │
 │ [Iniciar] [Cancelar]        │
 └─────────────────────────────┘
@@ -424,7 +425,7 @@ Usuario hace clic en 🤝 para un plan específico
 ┌─────────────────────────────┐
 │ ✅ ¡Refinamiento completo! │
 │                             │
-│ El plan ha sido mejorado    │
+│ El elemento ha sido mejorado│
 │ con aportes de 5 expertos   │
 │                             │
 │ [Ver cambios] [Cerrar]      │
@@ -435,24 +436,24 @@ Usuario hace clic en 🤝 para un plan específico
 
 | Característica | Agente Maestro 🤖 | Comité 🤝 |
 |----------------|-------------------|-----------|
-| **Alcance** | Plan completo según filtros | Plan específico seleccionado |
+| **Alcance** | Portafolio (según filtros) | Elemento del portafolio seleccionado |
 | **Velocidad** | Rápido (2-5 min) | Más lento (5-8 min) |
 | **Profundidad** | Análisis automático completo | Debate multidimensional detallado |
 | **Perspectivas** | Una (GPT-4) | Cinco (PMG, Abogado, Desarrollador, Implementador, Secretario) |
 | **Proceso** | Generación directa | Debate iterativo entre agentes |
 | **Mejor para** | Actualización rápida y completa | Refinamiento con validación experta |
-| **Uso típico** | Regeneración periódica | Planes estratégicos críticos |
-| **Disponibilidad** | Solo Vista por Planes | Solo Vista por Planes |
-| **Resultado** | Plan cohesivo y estructurado | Plan validado multidimensionalmente |
+| **Uso típico** | Regeneración periódica | Elementos estratégicos críticos |
+| **Disponibilidad** | Solo Vista por Portafolio | Solo Vista por Portafolio |
+| **Resultado** | Portafolio cohesivo y estructurado | Elemento validado multidimensionalmente |
 
 ### Consejos para usar la IA
 
 ✅ **Mejores prácticas:**
 - **Selecciona los filtros correctos** antes de regenerar (subdimensión, instrumento, nivel)
-- **Usa Agente Maestro (🤖)** para actualizaciones rápidas del plan completo
+- **Usa Agente Maestro (🤖)** para actualizaciones rápidas del portafolio
 - **Usa Comité (🤝)** cuando necesites análisis desde múltiples perspectivas
 - **Activa Vista Comparativa** después de usar ambos sistemas para comparar resultados
-- **Edita manualmente** los planes regenerados para ajustarlos a tu contexto específico
+- **Edita manualmente** los elementos regenerados para ajustarlos a tu contexto específico
 - **No cierres la ventana** mientras la regeneración está en progreso
 - **Espera a que complete al 100%** antes de editar los datos
 
@@ -460,7 +461,7 @@ Usuario hace clic en 🤝 para un plan específico
 - Regenerar sin tener los filtros adecuados seleccionados
 - Cambiar de pestaña o dimensión durante la regeneración
 - Cancelar procesos a mitad de ejecución (los cambios parciales no se guardan)
-- Regenerar el mismo plan múltiples veces consecutivas sin revisar los resultados
+- Regenerar el mismo elemento múltiples veces consecutivas sin revisar los resultados
 - Usar regeneración en Vista Total (no está disponible)
 - Editar manualmente mientras el sistema está regenerando
 
@@ -471,7 +472,7 @@ Usuario hace clic en 🤝 para un plan específico
 ### Exportar datos
 
 **¿Para qué sirve?**
-- Crear respaldos de tus planes
+- Crear respaldos de tu portafolio
 - Compartir datos con otros sistemas
 - Analizar datos en Excel u otras herramientas
 - Cumplir requisitos de auditoría
@@ -490,8 +491,8 @@ Usuario hace clic en 🤝 para un plan específico
 
 **Nombre del archivo:**
 ```
-planes_gobernanza_2025-11-11.json
-planes_todos_2025-11-11.json
+portafolio_gobernanza_2025-11-11.json
+portafolio_todos_2025-11-11.json
 ```
 
 ### Importar datos
@@ -562,11 +563,11 @@ Tu archivo JSON debe tener esta estructura:
 
 ## 🔍 Vista Comparativa
 
-La aplicación permite comparar planes generados por el **Agente Maestro** vs el **Comité** lado a lado.
+La aplicación permite comparar elementos del portafolio generados por el **Agente Maestro** vs el **Comité** lado a lado.
 
 ### ¿Qué es la Vista Comparativa?
 
-- **Disponible solo en Vista por Planes**
+- **Disponible solo en Vista por Portafolio**
 - Muestra dos tablas en paralelo
 - **Izquierda:** Planes creados por Agente Maestro
 - **Derecha:** Planes creados por Comité
@@ -574,7 +575,7 @@ La aplicación permite comparar planes generados por el **Agente Maestro** vs el
 
 ### Acceder a la Vista Comparativa
 
-**Requisito:** Debes estar en **Vista por Planes** con filtros seleccionados
+**Requisito:** Debes estar en **Vista por Portafolio** con filtros seleccionados
 
 1. **Click en "Vista comparativa"** en la toolbar superior derecha
 2. **La pantalla se dividirá** en dos paneles
@@ -585,7 +586,7 @@ La aplicación permite comparar planes generados por el **Agente Maestro** vs el
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│  Instrumento: [...]  Plan: [...]  [Vista normal]         │
+│  Instrumento: [...]  Portafolio: [...]  [Vista normal]    │
 ├─────────────────────────┬────────────────────────────────┤
 │   🤖 Agente Maestro    │    🤝 Comité                   │
 ├─────────────────────────┼────────────────────────────────┤
@@ -719,7 +720,7 @@ El **SuperPrompt** es el conjunto de instrucciones que guía al Agente Maestro (
 
 ### Acceder a la Gestión de Prompts
 
-1. **Desde cualquier vista**, haz clic en **"📝 Gestión de Prompts"** (al lado de "Exportar Planes")
+1. **Desde cualquier vista**, haz clic en **"📝 Gestión de Prompts"** (al lado de "Exportar Portafolio")
 2. Verás la interfaz de edición del SuperPrompt
 
 ### Interfaz de Gestión
@@ -895,7 +896,7 @@ Sí, exporta en formato CSV y ábrelo con Excel, Google Sheets u otra herramient
 
 ## 🔧 Solución de Problemas
 
-### Problema: No puedo editar un plan
+### Problema: No puedo editar un elemento del portafolio
 
 **Posibles causas:**
 - No tienes permisos de edición
@@ -1125,8 +1126,8 @@ Usa exactamente uno de estos valores:
 - Domingos: Cerrado
 
 **Documentación adicional:**
-- 📚 Wiki interna: https://wiki.tuinstitucion/editor-planes
-- 🎥 Videos tutoriales: https://videos.tuinstitucion/editor-planes
+- 📚 Wiki interna: https://wiki.tuinstitucion/Plataforma-SGD
+- 🎥 Videos tutoriales: https://videos.tuinstitucion/Plataforma-SGD
 - 📖 Manual técnico: [Contacta al administrador]
 
 ---
@@ -1136,7 +1137,7 @@ Usa exactamente uno de estos valores:
 ### Videos tutoriales disponibles
 
 1. **Introducción rápida** (5 min) - Panorama general de la aplicación
-2. **Editar planes** (8 min) - Cómo crear, editar y eliminar planes
+2. **Editar portafolio** (8 min) - Cómo crear, editar y eliminar elementos del portafolio
 3. **Regeneración con IA** (12 min) - Usar Agente Maestro y Comité
 4. **Importar/Exportar** (7 min) - Gestión de datos masivos
 5. **Configuración avanzada** (10 min) - Personalizar la aplicación
@@ -1345,9 +1346,9 @@ Ajusta las columnas visibles según tu necesidad:
 
 - **v2.0** (12 Nov 2025) - Actualización completa de interfaz:
   - Sistema de filtros unificado (un solo botón "Cambiar")
-  - Vista por Planes como modo predeterminado
+   - Vista por Portafolio como modo predeterminado
   - Vista Comparativa Agente Maestro vs Comité
-  - Botón + para agregar filas (solo en Vista por Planes)
+   - Botón + para agregar filas (solo en Vista por Portafolio)
   - Filtros específicos por dimensión (Instrumento, Nivel de Madurez)
   - Eliminación de selectores redundantes en toolbar
   - Búsqueda y ordenamiento por columnas
@@ -1361,7 +1362,7 @@ Ajusta las columnas visibles según tu necesidad:
 Ahora que has leído este manual, estás listo para:
 
 ✅ Navegar por la aplicación con confianza  
-✅ Usar Vista por Planes y Vista Total efectivamente  
+✅ Usar Vista por Portafolio y Vista Total efectivamente  
 ✅ Gestionar planes de transformación digital  
 ✅ Aprovechar ambos sistemas de IA (Agente Maestro y Comité)  
 ✅ Comparar resultados con Vista Comparativa  

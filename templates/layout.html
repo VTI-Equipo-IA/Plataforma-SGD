@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>{% block title %}Planes{% endblock %}</title>
+  <title>{% block title %}Portafolio{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
@@ -16,9 +16,9 @@
         <img class="brand-logo" src="{{ url_for('img_file', filename='logo-vti.png') }}" alt="VTI" />
         <img class="brand-logo" src="{{ url_for('img_file', filename='logo-gob-digital.png') }}" alt="Gobierno Digital" />
       </div>
-      <h1 class="app-title">Gestión de Planes</h1>
+      <h1 class="app-title">Gestión de Portafolio</h1>
       <div class="header-actions">
-        <a href="{{ url_for('planes.index') }}">Planes</a>
+        <a href="{{ url_for('planes.index') }}">Portafolio</a>
         <a href="{{ url_for('manual.index') }}">Manual de Usuario</a>
       </div>
     </div>

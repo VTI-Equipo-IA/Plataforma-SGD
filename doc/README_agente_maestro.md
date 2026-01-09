@@ -654,7 +654,7 @@ GROUP BY Autor;
 
 **Desde la versión 2.1 (Noviembre 2025):**
 - 📊 **Base de datos:** Tabla `ptd_prompts` en PostgreSQL
-- 🌐 **Interfaz web:** `/prompts/` en el Editor de Planes PTD
+- 🌐 **Interfaz web:** `/prompts/` en el Editor de Portafolio PTD
 - 📝 **Versionado automático:** Cada cambio crea nueva versión con historial
 - ⏮️ **Rollback:** Restaurar versiones anteriores con un clic
 - 📁 **Fallback:** `SuperPrompt_AgenteMaestro_PTD.md` (1,500+ líneas) si hay error de conexión

@@ -113,7 +113,7 @@ class TokenTracker:
         
         Uso:
             tracker = TokenTracker()
-            with tracker.track_execution(app="editor-planes") as track_info:
+            with tracker.track_execution(app="plataforma-sgd") as track_info:
                 response = llm.invoke(prompt)
                 track_info['tokens_entrada'] = response.usage.input_tokens
                 track_info['tokens_salida'] = response.usage.output_tokens

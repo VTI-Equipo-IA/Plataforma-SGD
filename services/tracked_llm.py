@@ -18,7 +18,7 @@ class TrackedChatOpenAI(ChatOpenAI):
     Uso:
         llm = TrackedChatOpenAI(
             model="gpt-4o",
-            app_name="editor-planes",
+            app_name="plataforma-sgd",
             grupo_procesos="generacion_plan_123"
         )
         response = llm.invoke("Tu prompt aquí")
@@ -183,7 +183,7 @@ def track_manual_call(
             tokens_entrada=150,
             tokens_salida=450,
             tiempo_ejecucion_ms=2300,
-            app_name="editor-planes-comite",
+            app_name="plataforma-sgd-comite",
             modelo="gpt-4o-mini",
             grupo_procesos="comite_procedimiento_admin_001"
         )

@@ -528,7 +528,7 @@ def regenerate(dim, row_id):
         return redirect(url_for("planes.index", dim=d.slug))
 
     update_row(table, row_id, {column_name: plan_text})
-    flash("Plan regenerado correctamente.", "success")
+    flash("Portafolio regenerado correctamente.", "success")
     return redirect(url_for("planes.index", dim=d.slug))
 
 @bp.post("/<dim>/<int:row_id>/edit-inline")
@@ -895,7 +895,7 @@ def regenerate_comite_full(dim):
 
 @bp.get("/export")
 def export_plans():
-    """Exporta todos los planes a un archivo Excel con formato."""
+    """Exporta el portafolio PTD a un archivo Excel con formato."""
     try:
         # Obtener la tabla
         dim = default_dimension()
@@ -909,8 +909,8 @@ def export_plans():
             excel_file,
             mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             as_attachment=True,
-            download_name='planes_ptd.xlsx'
+            download_name='portafolio_ptd.xlsx'
         )
     except Exception as e:
-        flash(f"Error al exportar planes: {str(e)}", "error")
+        flash(f"Error al exportar portafolio: {str(e)}", "error")
         return redirect(url_for('planes.index'))

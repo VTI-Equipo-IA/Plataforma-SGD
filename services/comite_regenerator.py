@@ -1,5 +1,5 @@
 """
-Servicio para regeneración de planes PTD usando scripts del Comité.
+Servicio para regeneración/refinamiento de portafolio PTD usando scripts del Comité.
 Ejecuta scripts de refinamiento iterativo por fila individual con sistema de agentes MCP.
 
 NOTA PARA DESARROLLADOR:
@@ -112,7 +112,7 @@ def _run_script_thread(task: ComiteRegenerationTask, script_path: str, cwd: str)
             with _lock:
                 task.status = "completed"
                 task.progress = 100
-                task.message = "Plan refinado exitosamente por el comité"
+                task.message = "Elemento del portafolio refinado exitosamente por el comité"
                 task.completed_at = datetime.now()
         else:
             with _lock:

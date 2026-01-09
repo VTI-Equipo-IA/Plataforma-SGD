@@ -18,7 +18,7 @@
 </form>
 
 <div class="toolbar-right" style="display:flex; gap:8px; align-items:center;">
-  {# Formulario unificado para filtros de plan en modo "plan" #}
+  {# Formulario unificado para filtros de portafolio en modo "plan" #}
   {% if view_mode == 'plan' and (subdimension_options or instrumento_options or nivel_madurez_options) %}
     <form method="get" action="{{ url_for('planes.index') }}" class="subdimension-filter" style="display:flex; gap:6px; align-items:center;">
       <input type="hidden" name="dim" value="{{ current_dim.slug }}">
@@ -49,7 +49,7 @@
       
       {# Selector de Subdimensión (para todas las dimensiones) #}
       {% if subdimension_options %}
-        <label for="subdim-select" style="font-size:14px; font-weight:600;">Plan:</label>
+        <label for="subdim-select" style="font-size:14px; font-weight:600;">Portafolio:</label>
         <select name="subdim" id="subdim-select" style="max-width:150px;" title="{{ active_subdimension }}">
           {% for s in (subdimension_options or []) %}
             <option value="{{ s }}" {% if active_subdimension == s %}selected{% endif %} title="{{ s }}">{{ s }}</option>
@@ -70,13 +70,13 @@
             data-instrumento="{{ active_instrumento or '' }}"
             data-nivel-madurez="{{ active_nivel_madurez or '' }}"
             onclick="regeneratePlan(this.dataset.dim, this.dataset.subdimension, this.dataset.instrumento, this.dataset.nivelMadurez)"
-            title="Regenerar plan de Agente Maestro para esta subdimensión">
-      🔄 Regenerar plan Agente Maestro
+            title="Regenerar portafolio (Agente Maestro) para esta subdimensión">
+          🔄 Regenerar portafolio Agente Maestro
     </button>
     <button type="button" class="btn-small btn-regen-comite" 
             onclick="regeneratePlanComiteSubdimension('{{ current_dim.slug }}', '{{ active_subdimension }}', '{{ active_instrumento or '' }}', '{{ active_nivel_madurez or '' }}')"
-            title="Regenerar TODOS los planes del Comité para esta subdimensión (procesa todas las filas)">
-      🤝 Regenerar plan Comité
+            title="Regenerar TODO el portafolio del Comité para esta subdimensión (procesa todas las filas)">
+          🤝 Regenerar portafolio Comité
     </button>
   {% endif %}
   
@@ -84,12 +84,12 @@
   {% if view_mode == 'total' %}
     <button type="button" class="btn-small btn-regen-full" 
             onclick="regenerateFull('{{ current_dim.slug }}')"
-            title="Regenerar todos los planes de Agente Maestro para esta dimensión">
+            title="Regenerar todo el portafolio (Agente Maestro) para esta dimensión">
       🔄 Regenerar completo Agente Maestro
     </button>
     <button type="button" class="btn-small btn-regen-comite-full" 
             onclick="regenerateFullComite('{{ current_dim.slug }}')"
-            title="Regenerar TODOS los planes del Comité para toda la dimensión (procesa todas las subdimensiones)">
+            title="Regenerar TODO el portafolio del Comité para toda la dimensión (procesa todas las subdimensiones)">
       🤝 Regenerar completo Comité
     </button>
   {% endif %}
@@ -98,7 +98,7 @@
   {% if view_mode == 'plan' %}
     <a class="btn-small" href="{{ url_for('planes.index', dim=current_dim.slug, view='total', q=q, order=order, dir=direction) }}" title="Ver todas las filas">Vista total</a>
   {% else %}
-    <a class="btn-small" href="{{ url_for('planes.index', dim=current_dim.slug, view='plan', q=q, order=order, dir=direction) }}" title="Ver por plan individual">Vista por plan</a>
+    <a class="btn-small" href="{{ url_for('planes.index', dim=current_dim.slug, view='plan', q=q, order=order, dir=direction) }}" title="Ver por portafolio">Vista por portafolio</a>
   {% endif %}
 
   {# Botón de vista comparativa: solo en modo "plan" #}

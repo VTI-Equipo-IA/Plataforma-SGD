@@ -1,6 +1,6 @@
 # services/exporter.py
 """
-Servicio de exportación de planes a Excel.
+Servicio de exportación de portafolio a Excel.
 Genera archivos Excel con formato específico incluyendo estilos y colores.
 """
 from io import BytesIO
@@ -14,7 +14,7 @@ from extensions.db import db
 
 def export_plans_to_excel(table) -> BytesIO:
     """
-    Exporta todos los planes de la base de datos a un archivo Excel
+    Exporta el portafolio de la base de datos a un archivo Excel
     con el formato especificado.
     
     Args:
@@ -68,7 +68,7 @@ def export_plans_to_excel(table) -> BytesIO:
     output = BytesIO()
     wb = Workbook()
     ws = wb.active
-    ws.title = "Planes PTD"
+    ws.title = "Portafolio PTD"
     
     # Definir estilos
     # Header style - azul oscuro con texto blanco

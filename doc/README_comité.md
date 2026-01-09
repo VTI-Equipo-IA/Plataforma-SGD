@@ -99,7 +99,7 @@ Guarda el resultado en un archivo Excel con:
 ---
 
 ### 🧩 **Modo App (carpeta Main_app)**
-Usado en la **aplicación de mantenimiento de planes**.
+Usado en la **aplicación de mantenimiento de portafolio**.
 Opera directamente sobre la BD PTD creada con `crear_tabla_ptd.sql`.
 
 Ejemplo:
@@ -110,7 +110,7 @@ python Main_app/main_app_gobernanza.py --method "hito"
 Funciones disponibles:
 - `method="activity"` → Regenera actividad sin tocar hitos
 - `method="hito"` → Regenera solo hitos del bloque
-- `method="full"` → Regenera plan completo (hitos + actividades)
+- `method="full"` → Regenera portafolio completo (hitos + actividades)
 
 ---
 

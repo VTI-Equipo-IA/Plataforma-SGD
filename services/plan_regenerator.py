@@ -1,5 +1,5 @@
 """
-Servicio para regeneración de planes PTD usando scripts del Agente Maestro.
+Servicio para regeneración de portafolio PTD usando scripts del Agente Maestro.
 Ejecuta scripts de Python en subprocess y monitorea su progreso.
 """
 import subprocess
@@ -56,7 +56,7 @@ def _run_script_thread(task: RegenerationTask, script_path: str, cwd: str):
     with _lock:
         task.status = "running"
         task.started_at = datetime.now()
-        task.message = "Regenerando planes..."
+        task.message = "Regenerando portafolio..."
         task.progress = 10
     
     try:
@@ -100,14 +100,14 @@ def _run_script_thread(task: RegenerationTask, script_path: str, cwd: str):
             with _lock:
                 task.status = "completed"
                 task.progress = 100
-                task.message = "Planes regenerados exitosamente"
+                task.message = "Portafolio regenerado exitosamente"
                 task.completed_at = datetime.now()
         else:
             with _lock:
                 task.status = "failed"
                 task.progress = 0
                 task.error = f"Error en script: {stderr[:500]}"
-                task.message = "Error al regenerar planes"
+                task.message = "Error al regenerar portafolio"
                 task.completed_at = datetime.now()
                 
     except Exception as e:
@@ -127,14 +127,14 @@ def start_regeneration(
     full_regeneration: bool = False
 ) -> str:
     """
-    Inicia un proceso de regeneración de planes.
+    Inicia un proceso de regeneración de portafolio.
     
     Args:
         dimension_slug: Slug de la dimensión (gobernanza-datos, calidad-web-servicios-digital, procedimiento-administrativo)
         subdimension: Nombre de la subdimensión (opcional, para regeneración individual)
         instrumento: Instrumento (opcional, para Calidad Web)
         nivel_madurez: Nivel de madurez (opcional, para Gobernanza de Datos)
-        full_regeneration: Si True, regenera todos los planes de la dimensión
+        full_regeneration: Si True, regenera todo el portafolio de la dimensión
     
     Returns:
         ID de la tarea creada

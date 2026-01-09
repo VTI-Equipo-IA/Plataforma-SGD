@@ -1,8 +1,8 @@
-# 🛠️ Stack Tecnológico - Editor de Planes PTD
+# 🛠️ Stack Tecnológico - Editor de Portafolio PTD
 
 ## 📋 Documento para Instalación en Servidor
 
-Este documento detalla todas las tecnologías, dependencias y requisitos necesarios para instalar y ejecutar la plataforma **Editor de Planes PTD** en un servidor de producción.
+Este documento detalla todas las tecnologías, dependencias y requisitos necesarios para instalar y ejecutar la plataforma **Editor de Portafolio PTD** en un servidor de producción.
 
 ---
 
@@ -567,7 +567,7 @@ python app.py
 sudo apt install nginx
 ```
 
-#### Configuración `/etc/nginx/sites-available/editor-planes`:
+#### Configuración `/etc/nginx/sites-available/plataforma-sgd`:
 ```nginx
 server {
     listen 80;
@@ -587,12 +587,12 @@ server {
     }
 
     location /static {
-        alias /ruta/a/editor-planes/static;
+        alias /ruta/a/plataforma-sgd/static;
         expires 30d;
     }
 
     location /img {
-        alias /ruta/a/editor-planes/img;
+        alias /ruta/a/plataforma-sgd/img;
         expires 30d;
     }
 }
@@ -600,7 +600,7 @@ server {
 
 #### Activar sitio:
 ```bash
-sudo ln -s /etc/nginx/sites-available/editor-planes /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/plataforma-sgd /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 ```
@@ -618,18 +618,18 @@ sudo certbot --nginx -d tu-dominio.com
 
 ### Systemd Service (Autoarranque)
 
-#### Crear `/etc/systemd/system/editor-planes.service`:
+#### Crear `/etc/systemd/system/plataforma-sgd.service`:
 ```ini
 [Unit]
-Description=Editor de Planes PTD
+Description=Editor de Portafolio PTD
 After=network.target postgresql.service
 
 [Service]
 User=www-data
 Group=www-data
-WorkingDirectory=/ruta/a/editor-planes
-Environment="PATH=/ruta/a/editor-planes/editor/bin"
-ExecStart=/ruta/a/editor-planes/editor/bin/gunicorn -c gunicorn.conf.py app:app
+WorkingDirectory=/ruta/a/plataforma-sgd
+Environment="PATH=/ruta/a/plataforma-sgd/editor/bin"
+ExecStart=/ruta/a/plataforma-sgd/editor/bin/gunicorn -c gunicorn.conf.py app:app
 Restart=always
 
 [Install]
@@ -639,9 +639,9 @@ WantedBy=multi-user.target
 #### Activar servicio:
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl start editor-planes
-sudo systemctl enable editor-planes
-sudo systemctl status editor-planes
+sudo systemctl start plataforma-sgd
+sudo systemctl enable plataforma-sgd
+sudo systemctl status plataforma-sgd
 ```
 
 ---
@@ -736,11 +736,11 @@ python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().d
 
 ```bash
 # Propietario del proyecto
-sudo chown -R www-data:www-data /ruta/a/editor-planes
+sudo chown -R www-data:www-data /ruta/a/plataforma-sgd
 
 # Permisos de archivos
-chmod 644 /ruta/a/editor-planes/.env
-chmod 755 /ruta/a/editor-planes
+chmod 644 /ruta/a/plataforma-sgd/.env
+chmod 755 /ruta/a/plataforma-sgd
 
 # Logs
 sudo mkdir -p /var/log/gunicorn
@@ -952,13 +952,13 @@ sudo apt install python3-dev libpq-dev
 #### 3. Gunicorn no arranca
 ```bash
 # Ver logs
-journalctl -u editor-planes -n 50
+journalctl -u plataforma-sgd -n 50
 
 # Verificar permisos
-ls -la /ruta/a/editor-planes
+ls -la /ruta/a/plataforma-sgd
 
 # Probar manualmente
-/ruta/a/editor-planes/editor/bin/gunicorn -b 0.0.0.0:5000 app:app
+/ruta/a/plataforma-sgd/editor/bin/gunicorn -b 0.0.0.0:5000 app:app
 ```
 
 #### 4. Error de API OpenAI
