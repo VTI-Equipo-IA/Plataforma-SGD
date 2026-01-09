@@ -467,100 +467,6 @@ Usuario hace clic en 🤝 para un elemento específico
 
 ---
 
-## 💾 Importar y Exportar Datos
-
-### Exportar datos
-
-**¿Para qué sirve?**
-- Crear respaldos de tu portafolio
-- Compartir datos con otros sistemas
-- Analizar datos en Excel u otras herramientas
-- Cumplir requisitos de auditoría
-
-**Cómo exportar:**
-
-1. **Haz clic en el botón 💾** "Exportar" en la barra superior
-2. **Selecciona qué exportar:**
-   - ✅ Dimensión actual (solo la pestaña activa)
-   - ✅ Todas las dimensiones (todo el sistema)
-3. **Elige el formato:**
-   - **JSON** (recomendado para importar después)
-   - **CSV** (para Excel o análisis de datos)
-4. **Haz clic en "Descargar"**
-5. **El archivo se descargará** a tu carpeta de Descargas
-
-**Nombre del archivo:**
-```
-portafolio_gobernanza_2025-11-11.json
-portafolio_todos_2025-11-11.json
-```
-
-### Importar datos
-
-**¿Para qué sirve?**
-- Restaurar respaldos previos
-- Cargar planes desde otro sistema
-- Actualizar múltiples planes de una vez
-- Migrar datos entre ambientes
-
-**Cómo importar:**
-
-1. **Prepara tu archivo JSON** con el formato correcto (ver sección "Formato de importación" abajo)
-2. **Haz clic en el botón 📥** "Importar" en la barra superior
-3. **Se abrirá un cuadro de diálogo**
-4. **Haz clic en "Seleccionar archivo"** o arrastra el archivo
-5. **Verifica la vista previa** de los datos a importar
-6. **Selecciona el modo de importación:**
-   - **Reemplazar todo**: Borra datos existentes y carga los nuevos
-   - **Agregar/Actualizar**: Mantiene datos existentes y añade/actualiza
-   - **Solo agregar nuevos**: Solo añade planes que no existan
-7. **Haz clic en "Importar"**
-8. **Espera la confirmación** (puede tomar 10-30 segundos)
-9. **Recibirás un resumen:**
-   ```
-   ✅ Importación exitosa
-   - 45 planes importados
-   - 12 planes actualizados
-   - 3 planes duplicados (omitidos)
-   ```
-
-### Formato de importación (JSON)
-
-Tu archivo JSON debe tener esta estructura:
-
-```json
-{
-  "dimension": "Gobernanza de Datos",
-  "planes": [
-    {
-      "subdimension": "Estrategia y Gobierno del Dato",
-      "instrumento": "Política de Datos Abiertos",
-      "nivel_madurez": "Definido",
-      "hito": "Implementar catálogo de datos abiertos",
-      "actividad": "Desarrollar plataforma web para publicación de datasets"
-    },
-    {
-      "subdimension": "Calidad y Gestión de Datos",
-      "instrumento": "Manual de Calidad de Datos",
-      "nivel_madurez": "Inicial",
-      "hito": "Definir estándares de calidad",
-      "actividad": "Crear documento con criterios de validación"
-    }
-  ]
-}
-```
-
-**Campos requeridos:**
-- `subdimension`: Nombre exacto de la subdimensión
-- `instrumento`: Descripción del instrumento
-- `nivel_madurez`: Uno de: "Inicial", "Gestionado", "Definido", "Cuantitativo", "Optimizado"
-- `hito`: Descripción del objetivo
-- `actividad`: Descripción de la tarea
-
-> ⚠️ **Importante:** Los nombres de subdimensión deben coincidir exactamente con los existentes
-
----
-
 ## 🔍 Vista Comparativa
 
 La aplicación permite comparar elementos del portafolio generados por el **Agente Maestro** vs el **Comité** lado a lado.
@@ -657,58 +563,6 @@ La aplicación permite comparar elementos del portafolio generados por el **Agen
 - Verificas que el Comité aportó valor adicional
 - Comparas nivel de detalle
 - Decides si el refinamiento valió la pena
-
----
-
-## ⚙️ Configuración
-
-### Acceder a la configuración
-
-1. **Haz clic en el botón ⚙️** "Configuración" en la barra superior
-2. **Se abrirá el panel de configuración**
-
-### Opciones disponibles
-
-#### General
-
-| Opción | Descripción | Valores | Por defecto |
-|--------|-------------|---------|-------------|
-| **Filas por página** | Cuántos planes mostrar por página | 10, 25, 50, 100 | 25 |
-| **Auto-guardar** | Guardar automáticamente al editar | Sí / No | Sí |
-| **Confirmar eliminaciones** | Pedir confirmación antes de borrar | Sí / No | Sí |
-| **Tema visual** | Color de la interfaz | Claro / Oscuro | Claro |
-
-#### Regeneración con IA
-
-| Opción | Descripción | Valores | Por defecto |
-|--------|-------------|---------|-------------|
-| **Temperatura GPT** | Creatividad de la IA (0-1) | 0.0 - 1.0 | 0.3 |
-| **Modelo** | Versión de GPT a usar | GPT-4, GPT-4o | GPT-4o |
-| **Timeout** | Tiempo máximo de espera | 60-600 seg | 300 seg |
-| **Auto-aplicar cambios** | Aplicar sin confirmación | Sí / No | No |
-
-#### Importación/Exportación
-
-| Opción | Descripción | Valores | Por defecto |
-|--------|-------------|---------|-------------|
-| **Modo de importación** | Comportamiento por defecto | Reemplazar / Agregar | Agregar |
-| **Incluir metadatos** | Exportar con info adicional | Sí / No | Sí |
-| **Formato de fecha** | En nombres de archivo | DD-MM-YYYY / YYYY-MM-DD | YYYY-MM-DD |
-
-### Guardar configuración
-
-1. **Ajusta las opciones** según tus preferencias
-2. **Haz clic en "Guardar configuración"** en la parte inferior
-3. **Recibirás confirmación:** "✅ Configuración guardada"
-4. **Los cambios se aplican inmediatamente**
-
-### Restaurar valores por defecto
-
-1. **En el panel de configuración**, busca el botón "Restaurar por defecto"
-2. **Haz clic**
-3. **Confirma:** "¿Restaurar todas las opciones a valores por defecto?"
-4. **Haz clic en "Sí"**
-5. **Todas las opciones vuelven** a su estado original
 
 ---
 
@@ -1116,31 +970,13 @@ Usa exactamente uno de estos valores:
 ### ¿Necesitas ayuda adicional?
 
 **Soporte Técnico:**
-- 📧 Email: soporte@tuinstitucion.gob
-- 📞 Teléfono: +123 456 7890
+- 📧 Email: oficina.ia@uchile.cl
 - 💬 Chat: disponible en horario laboral
-
-**Horario de atención:**
-- Lunes a Viernes: 8:00 AM - 6:00 PM
-- Sábados: 9:00 AM - 1:00 PM
-- Domingos: Cerrado
-
-**Documentación adicional:**
-- 📚 Wiki interna: https://wiki.tuinstitucion/Plataforma-SGD
-- 🎥 Videos tutoriales: https://videos.tuinstitucion/Plataforma-SGD
-- 📖 Manual técnico: [Contacta al administrador]
 
 ---
 
 ## 🎓 Recursos de Aprendizaje
 
-### Videos tutoriales disponibles
-
-1. **Introducción rápida** (5 min) - Panorama general de la aplicación
-2. **Editar portafolio** (8 min) - Cómo crear, editar y eliminar elementos del portafolio
-3. **Regeneración con IA** (12 min) - Usar Agente Maestro y Comité
-4. **Importar/Exportar** (7 min) - Gestión de datos masivos
-5. **Configuración avanzada** (10 min) - Personalizar la aplicación
 
 ### Glosario de términos
 
@@ -1286,34 +1122,9 @@ Combina múltiples filtros para búsquedas complejas:
 - Busca términos específicos en hitos
 - Ordena por múltiples columnas
 
-### Atajos de teclado (si están disponibles)
-
-| Atajo | Acción |
-|-------|--------|
-| Ctrl + S | Guardar edición actual |
-| Ctrl + E | Abrir editor del plan seleccionado |
-| Ctrl + F | Buscar en tabla |
-| Ctrl + R | Recargar datos |
-| Esc | Cerrar modal/cancelar acción |
-
-### Personalización de vistas
-
-Ajusta las columnas visibles según tu necesidad:
-1. Clic derecho en encabezado de tabla
-2. Selecciona "Personalizar columnas"
-3. Marca/desmarca columnas
-4. Guarda tu configuración
-
 ---
 
 ## 🔒 Seguridad y Privacidad
-
-### Protección de datos
-
-- Todos los datos se transmiten encriptados (HTTPS)
-- Contraseñas hasheadas en la base de datos
-- Respaldos automáticos cada 24 horas
-- Acceso controlado por roles y permisos
 
 ### Buenas prácticas de seguridad
 
