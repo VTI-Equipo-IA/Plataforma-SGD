@@ -5,7 +5,12 @@ Wrappers y utilidades para usar LLMs con tracking automático de consumo.
 import os
 from typing import Optional, Any, Dict
 from langchain_openai import ChatOpenAI
-from langchain.schema import BaseMessage
+try:
+    # LangChain v0.x
+    from langchain.schema import BaseMessage  # type: ignore
+except ModuleNotFoundError:
+    # LangChain v1.x
+    from langchain_core.messages import BaseMessage  # type: ignore
 from langchain_core.runnables import RunnableLambda
 from .token_tracker import get_tracker, extract_usage_from_response
 
